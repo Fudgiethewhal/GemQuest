@@ -28,12 +28,12 @@
 <![endif]-->
 
     <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
-</head>
+    </asp:ContentPlaceHolder>        
+</head> 
 <body>
     <form id="form1" runat="server">
 
-         <!-- ============================================================== -->
+    <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
     <div class="preloader">
@@ -64,17 +64,17 @@
                         <a href="index.html">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="../AdminTemplate/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                                <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo icon -->
-                                <img src="../AdminTemplate/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                                <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span class="logo-text">
                                 <!-- dark Logo text -->
-                                <img src="../AdminTemplate/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                                <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo text -->
-                                <img src="../AdminTemplate/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                                <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                             </span>
                         </a>
                     </div>
@@ -531,8 +531,8 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>               
+               <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+               </asp:ContentPlaceHolder>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
