@@ -28,7 +28,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <asp:FileUpload ID="fuCategoryImage" runat="server" CssClass="form-control" />
-                                    
+                                    <asp:HiddenField ID="hfCategoryId" runat="server" Value="0" />
                                 </div>
                             </div>
                         </div>
