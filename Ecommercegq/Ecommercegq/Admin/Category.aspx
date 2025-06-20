@@ -69,7 +69,7 @@
                     <div>
                         <asp:Repeater ID="rCategory" runat="server">
                             <HeaderTemplate>
-                                <table>
+                                <table class="table data-table-export table-hover nowrap">
                                     <thead>
                                         <tr>
                                             <th class="table-plus">Name</th>
@@ -78,8 +78,8 @@
                                             <th>CreatedDate</th>
                                             <th class="datatable-nosort">Action</th>
                                         </tr>
-                                        <tbody>                                       
                                     </thead>                                
+                                        <tbody>                                       
                             </HeaderTemplate>
                             <ItemTemplate>
                                 <tr>
@@ -90,16 +90,16 @@
                                     <td>
                                         <asp:Label ID="lblIsActive" runat="server" 
                                             Text ='<%# Convert.ToBoolean(Eval("IsActive")) ? "Active" : "In-Active" %>'
-                                            CssClass='<%# Convert.ToBoolean(Eval("IsActive")) ? "badge badge-success"
+                                    pd        CssClass='<%# Convert.ToBoolean(Eval("IsActive")) ? "badge badge-success"
                                                 : "badge badge-danger" %>' >
                                         </asp:Label>
                                     </td>
                                     <td> <%# Eval("CreatedDate") %></td>
                                     <td>
-                                        <asp:LinkButton ID="lbEdit" Text="Edit" runat="server" CssClass="badge badge-primary">
+                                        <asp:LinkButton ID="lblEdit" Text="Edit" runat="server" CssClass="badge badge-primary">
                                             <i class="fas fa-edit"></i>
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lbDelete" Text="Delete" runat="server" CssClass="badge badge-danger">
+                                        <asp:LinkButton ID="lblDelete" Text="Delete" runat="server" CssClass="badge badge-danger">
                                             <i class="fas fa-trash-alt"></i>
                                         </asp:LinkButton>
 
