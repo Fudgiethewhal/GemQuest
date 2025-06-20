@@ -21,6 +21,29 @@ namespace Ecommercegq.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             lblMsg.Visible = false;
+            getCategories(); 
+        }
+
+        void getCategories()
+        {
+            using (MySqlConnection con = new MySqlConnection(Utils.getConnection()))
+            using (MySqlCommand cmd = new MySqlCommand("Category_Crud", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("?in_Action", "GETALL");
+                cmd.Parameters.AddWithValue("?in_CategoryId", DBNull.Value);
+                cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
+                cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
+                cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
+
+                using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    rCategory.DataSource = dt;
+                    rCategory.DataBind();
+                }
+            }
         }
 
 #pragma warning disable IDE1006 // Naming Styles

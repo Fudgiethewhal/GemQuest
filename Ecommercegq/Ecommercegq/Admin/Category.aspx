@@ -62,13 +62,59 @@
         </div>
 
         <div class="col-sm-12 col-md-8">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Category</h4>
-            <hr /> 
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Category List</h4>
+                    <hr />
+                    <div>
+                        <asp:Repeater ID="rCategory" runat="server">
+                            <HeaderTemplate>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="table-plus">Name</th>
+                                            <th>Image</th>
+                                            <th>IsActive</th>
+                                            <th>CreatedDate</th>
+                                            <th class="datatable-nosort">Action</th>
+                                        </tr>
+                                        <tbody>                                       
+                                    </thead>                                
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="table-plus"> <%# Eval("CategoryName") %> </td>
+                                    <td>
+                                        <img width="40" src="<%# Ecommercegq.Utils.getImageUrl( Eval("CategoryImageUrl")) %>" alt="image" />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblIsActive" runat="server" 
+                                            Text ='<%# Convert.ToBoolean(Eval("IsActive")) ? "Active" : "In-Active" %>'
+                                            CssClass='<%# Convert.ToBoolean(Eval("IsActive")) ? "badge badge-success"
+                                                : "badge badge-danger" %>' >
+                                        </asp:Label>
+                                    </td>
+                                    <td> <%# Eval("CreatedDate") %></td>
+                                    <td>
+                                        <asp:LinkButton ID="lbEdit" Text="Edit" runat="server" CssClass="badge badge-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </asp:LinkButton>
+                                        <asp:LinkButton ID="lbDelete" Text="Delete" runat="server" CssClass="badge badge-danger">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </asp:LinkButton>
+
+                                    </td>
+                                </tr> 
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                 </tbody>
+                                </table>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
     </div>
 
