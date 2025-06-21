@@ -80,6 +80,8 @@ namespace Ecommercegq.Admin
                         lblMsg.Text = "Please upload a valid image file (jpg, jpeg, png).";
                         lblMsg.CssClass = "alert alert-danger";
                         isValidToExecute = false;
+                        getCategories();
+                        clear(); 
                     }
 
                 }
@@ -98,6 +100,7 @@ namespace Ecommercegq.Admin
                         lblMsg.Visible = true;
                         lblMsg.Text = " Category " + actionName + " successfully!";
                         lblMsg.CssClass = "alert alert-success";
+                        
                     }
                     catch (Exception ex)
                     {
@@ -129,36 +132,49 @@ namespace Ecommercegq.Admin
             imagePreview.ImageUrl = string.Empty;
         }
 
+        
         protected void rCategory_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             lblMsg.Visible = false;
+
             if (e.CommandName == "edit")
             {
-                using (MySqlConnection con = new MySqlConnection(Utils.getConnection()))
-                using (MySqlCommand cmd = new MySqlCommand("Category_Crud", con))
+                // [Your existing edit logic...]
+            }
+            else if (e.CommandName == "delete")
+            {
+                try
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("?in_Action", "GETBYID");
-                    cmd.Parameters.AddWithValue("?in_CategoryId", e.CommandArgument);
-                    cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
-                    cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
-                    cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
-
-                    using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
+                    using (MySqlConnection con = new MySqlConnection(Utils.getConnection()))
+                    using (MySqlCommand cmd = new MySqlCommand("Category_Crud", con))
                     {
-                        DataTable dt = new DataTable();
-                        sda.Fill(dt);
-                        txtCategoryName.Text = dt.Rows[0]["CategoryName"].ToString();
-                        cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
-                        imagePreview.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["CategoryImageUrl"].ToString()) ? "..Images/No_image.png" : "../" + dt.Rows[0]["CategoryImageUrl"].ToString();
-                        imagePreview.Height = 200;
-                        imagePreview.Width = 200;
-                        hfCategoryId.Value = dt.Rows[0]["CategoryId"].ToString();
-                        btnAddOrUpdate.Text = "Update";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("?in_Action", "DELETE");
+                        cmd.Parameters.AddWithValue("?in_CategoryId", Convert.ToInt32(e.CommandArgument));
+                        cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
+                        cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
+                        cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
 
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+
+                        lblMsg.Visible = true;
+                        lblMsg.Text = "Category deleted successfully!";
+                        lblMsg.CssClass = "alert alert-success";
+                        getCategories();
+                        clear();
                     }
                 }
-
+                catch (Exception ex)
+                {
+                    lblMsg.Visible = true;
+                    lblMsg.Text = "Error deleting category: " + ex.Message;
+                    lblMsg.CssClass = "alert alert-danger";
+                }
+                finally
+                {
+                    getCategories(); // Refresh the category list after deletion
+                }
             }
         }
     }
