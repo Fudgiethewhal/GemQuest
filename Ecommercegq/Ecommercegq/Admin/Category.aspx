@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Category.aspx.cs" Inherits="Ecommercegq.Admin.Category" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script>
@@ -7,7 +8,7 @@
             setTimeout(function () {
                 document.getElementById("<%=lblMsg.ClientID %>").style.display = "none";
             }, seconds * 1000);
-        }; 
+        };
     </script>
 
     <script>
@@ -38,7 +39,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Category</h4>
                     <hr />
-                    
+
                     <div class="form-body">
                         <label>Category Name</label>
                         <div class="row">
@@ -56,8 +57,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <asp:FileUpload ID="fuCategoryImage" runat="server" CssClass="form-control" 
-                                        onchange ="ImagePreview(this);"/>
+                                    <asp:FileUpload ID="fuCategoryImage" runat="server" CssClass="form-control"
+                                        onchange="ImagePreview(this);" />
                                     <asp:HiddenField ID="hfCategoryId" runat="server" Value="0" />
                                 </div>
                             </div>
@@ -103,36 +104,37 @@
                                             <th>CreatedDate</th>
                                             <th class="datatable-nosort">Action</th>
                                         </tr>
-                                    </thead>                                
-                                        <tbody>                                       
+                                    </thead>
+                                    <tbody>
                             </HeaderTemplate>
                             <ItemTemplate>
                                 <tr>
-                                    <td class="table-plus"> <%# Eval("CategoryName") %> </td>
+                                    <td class="table-plus"><%# Eval("CategoryName") %> </td>
                                     <td>
                                         <img width="40" src="<%# Ecommercegq.Utils.getImageUrl( Eval("CategoryImageUrl")) %>" alt="image" />
                                     </td>
                                     <td>
-                                        <asp:Label ID="lblIsActive" runat="server" 
-                                            Text ='<%# Convert.ToBoolean(Eval("IsActive")) ? "Active" : "In-Active" %>'
+                                        <asp:Label ID="lblIsActive" runat="server"
+                                            Text='<%# Convert.ToBoolean(Eval("IsActive")) ? "Active" : "In-Active" %>'
                                             CssClass='<%# Convert.ToBoolean(Eval("IsActive")) ? "badge badge-success"
-                                                : "badge badge-danger" %>' >
+                                                : "badge badge-danger" %>'>
                                         </asp:Label>
                                     </td>
-                                    <td> <%# Eval("CreatedDate") %></td>
+                                    <td><%# Eval("CreatedDate") %></td>
                                     <td>
                                         <asp:LinkButton ID="lblEdit" Text="Edit" runat="server" CssClass="badge badge-primary"
                                             CommandArgument='<%# Eval("CategoryId") %>' CommandName="edit" CausesValidation="false">
                                             <i class="fas fa-edit"></i>
                                         </asp:LinkButton>
                                         <asp:LinkButton ID="lblDelete" Text="Delete" runat="server" CssClass="badge badge-danger">
+                                          CommandArgument='<%# Eval("CategoryId") %>' CommandName="delete" CausesValidation="false">
                                             <i class="fas fa-trash-alt"></i>
                                         </asp:LinkButton>
                                     </td>
-                                </tr> 
+                                </tr>
                             </ItemTemplate>
                             <FooterTemplate>
-                                 </tbody>
+                                </tbody>
                                 </table>
                             </FooterTemplate>
                         </asp:Repeater>
@@ -140,9 +142,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-
-
 </asp:Content>
