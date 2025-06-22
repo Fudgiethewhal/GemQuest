@@ -76,8 +76,7 @@ namespace Ecommercegq.Admin
 #pragma warning restore IDE1006 // Naming Styles
         protected void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
-            string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
-            bool isValidToExecute = false;
+            string actionName = string.Empty;
             int subCategoryId = Convert.ToInt32(hfSubCategoryId.Value);
             MySqlConnection con = new MySqlConnection(Utils.getConnection());
             MySqlCommand cmd = new MySqlCommand("SubCategory_Crud", con);
@@ -178,5 +177,4 @@ namespace Ecommercegq.Admin
 
         }
     }
-}
 }
