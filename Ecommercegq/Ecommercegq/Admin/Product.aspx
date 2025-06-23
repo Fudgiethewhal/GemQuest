@@ -1,5 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Product.aspx.cs" Inherits="Ecommercegq.Admin.Product" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+    window.onload = function () {
+        var seconds = 5;
+        setTimeout(function () {
+            document.getElementById("<%=lblMsg.ClientID %>").style.display = "none";
+        }, seconds * 1000);
+    };
+</script>
+<script>
+    function ImagePreview(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#<%=fuFirstImage.ClientID%>').prop('src', e.target.result)
+                    .width(200)
+                    .height(200);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -162,34 +184,113 @@
                     </div>
                 </div>
 
-               <%-- <label>Category Image</label>
                 <div class="row">
                     <div class="col-md-12">
+                        <label>Tags(Search Keyword)</label>
                         <div class="form-group">
-                            <asp:FileUpload ID="fuCategoryImage" runat="server" CssClass="form-control"
+                            <asp:TextBox ID="txtTags" runat="server" CssClass="form-control" placeholder="Enter Tags">                               
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvTags" runat="server" ForeColor="Red" Font-Size="Small"
+                                Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtTags"
+                                ErrorMessage="Product Tags is required"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Product Image 1</label>
+                        <div class="form-group">
+                            <asp:FileUpload ID="fuFirstImage" runat="server" CssClass="form-control" ToolTip=".jpg, .png, .jpeg image only"
+                                onchange="ImagePreview(this);" />                           
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Product Image 2</label>
+                        <div class="form-group">
+                            <asp:FileUpload ID="fuSecondImage" runat="server" CssClass="form-control" ToolTip=".jpg, .png, .jpeg image only"
                                 onchange="ImagePreview(this);" />
-                            <asp:HiddenField ID="hfCategoryId" runat="server" Value="0" />
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
+                        <label>Product Image 3</label>
                         <div class="form-group">
-                            <asp:CheckBox ID="cbIsActive" runat="server" Text="&nbsp; IsActive" />
+                            <asp:FileUpload ID="fuThirdImage" runat="server" CssClass="form-control" ToolTip=".jpg, .png, .jpeg image only"
+                                onchange="ImagePreview(this);" />
                         </div>
                     </div>
-                </div>--%>
 
-            <%--<div class="form-action pb-5">
-                <div class="text-left">
-                    <asp:Button ID="btnAddOrUpdate" runat="server" CssClass="btn btn-info" Text="Add" OnClick="btnAddOrUpdate_Click" />
-                    <asp:Button ID="btnClear" runat="server" CssClass="btn btn-dark" Text="Reset" OnClick="btnClear_Click" />
+                    <div class="col-md-6">
+                        <label>Product Image 4</label>
+                        <div class="form-group">
+                            <asp:FileUpload ID="fuFourthImage" runat="server" CssClass="form-control" ToolTip=".jpg, .png, .jpeg image only"
+                                onchange="ImagePreview(this);" />
+                        </div>
+                    </div>
                 </div>
-            </div>--%>
 
-            <%--<div>
-                <asp:Image ID="imagePreview" runat="server" CssClass="img-thumbnail" AlternateText="" />
-            </div>--%>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Default Image</label>
+                        <div class="form-group">
+                            <asp:RadioButtonList ID="rblDefaultImage" runat="server" RepeatDirection="Horizontal">
+                                <asp:ListItem Value="1">&nbsp;First&nbsp;</asp:ListItem>
+                                <asp:ListItem Value="1">&nbsp;Second&nbsp;</asp:ListItem>
+                                <asp:ListItem Value="1">&nbsp;Third&nbsp;</asp:ListItem>
+                                <asp:ListItem Value="1">&nbsp;Fourth&nbsp;</asp:ListItem>
+                            </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="rfvDefaultImage" runat="server" ForeColor="Red" Font-Size="Small"
+                                Display="Dynamic" SetFocusOnError="true" ControlToValidate="rblDefaultImage"
+                                ErrorMessage="Default Image is required"></asp:RequiredFieldValidator>
+                            <asp:HiddenField ID="hfDefaultImagePos" runat="server" Value="0"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Customized</label>
+                            <div class="form-group">
+                                <asp:CheckBox ID="cbIsCustomized" runat="server" Text="&nbsp; IsCustomized" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Active</label>
+                                <div class="form-group">
+                                    <asp:CheckBox ID="cbIsActive" runat="server" Text="&nbsp; IsActive" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 align-contain-sm-between pl-3">
+                                <span>
+                                    <asp:Image ID="imageProduct1" runat="server" CssClass="img-thumbnail" AlternateText="" style="display:none;" />
+                                </span>
+                                <span>
+                                    <asp:Image ID="imageProduct2" runat="server" CssClass="img-thumbnail" AlternateText="" style="display:none;" />
+                                </span>
+                                <span>
+                                    <asp:Image ID="imageProduct3" runat="server" CssClass="img-thumbnail" AlternateText="" style="display:none;" />
+                                </span>
+                                <span>
+                                    <asp:Image ID="imageProduct4" runat="server" CssClass="img-thumbnail" AlternateText="" style="display:none;" />
+                                </span>
+                            </div>
+                        </div>
+
+              
+            <div class="form-action pb-4">
+                <div class="text-left">
+                    <asp:Button ID="btnAddOrUpdate" runat="server" CssClass="btn btn-info" Text="Add" />
+                    <asp:Button ID="btnClear" runat="server" CssClass="btn btn-dark" Text="Reset" CausesValidation="false"/>
+                </div>
+            </div>
+
 
         </div>
     </div>
