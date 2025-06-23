@@ -27,12 +27,10 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <div class="mb-4">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>
-
     </div>
-
+    
     <div class="row">
         <div class="col-sm-12 col-md-4">
             <div class="card">

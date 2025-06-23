@@ -160,7 +160,7 @@ namespace Ecommercegq.Admin
                     lblMsg.Visible = true;
                     lblMsg.Text = "SubCategory deleted successfully!";
                     lblMsg.CssClass = "alert alert-success";
-                    getCategories();
+                    getSubCategories();
 
                 }
                 catch (Exception ex)

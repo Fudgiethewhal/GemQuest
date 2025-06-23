@@ -653,6 +653,7 @@
     <Content Include="Admin\Category.aspx" />
     <Content Include="Admin\Contact.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\Product.aspx" />
     <Content Include="Admin\SubCategory.aspx" />
     <Content Include="Global.asax" />
     <Content Include="UserTemplate\css\style.css" />
@@ -738,6 +739,13 @@
     </Compile>
     <Compile Include="Admin\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Product.aspx.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Product.aspx.designer.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\SubCategory.aspx.cs">
       <DependentUpon>SubCategory.aspx</DependentUpon>
