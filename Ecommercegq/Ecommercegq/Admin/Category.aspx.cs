@@ -28,8 +28,8 @@ namespace Ecommercegq.Admin
 
         void getCategories()
         {
-            MySqlConnection con = new MySqlConnection(Utils.getConnection());
-            MySqlCommand cmd = new MySqlCommand("Category_Crud", con);
+            con = new MySqlConnection(Utils.getConnection());
+            cmd = new MySqlCommand("Category_Crud", con);
             
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("?in_Action", "GETALL");
@@ -38,9 +38,9 @@ namespace Ecommercegq.Admin
                 cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
                 cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
 
-            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+            sda = new MySqlDataAdapter(cmd);
                 
-                    DataTable dt = new DataTable();
+                    dt = new DataTable();
                     sda.Fill(dt);
                     rCategory.DataSource = dt;
                     rCategory.DataBind();
@@ -53,8 +53,8 @@ namespace Ecommercegq.Admin
             string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
             bool isValidToExecute = false;
             int categoryId = Convert.ToInt32(hfCategoryId.Value);
-            MySqlConnection con = new MySqlConnection(Utils.getConnection());
-            MySqlCommand cmd = new MySqlCommand("Category_Crud", con);        
+            con = new MySqlConnection(Utils.getConnection());
+            cmd = new MySqlCommand("Category_Crud", con);        
             cmd.Parameters.AddWithValue("?in_Action", categoryId == 0 ? "INSERT" : "UPDATE");
             cmd.Parameters.AddWithValue("?in_CategoryId", categoryId);
             cmd.Parameters.AddWithValue("?in_CategoryName", txtCategoryName.Text.Trim());
@@ -117,7 +117,7 @@ namespace Ecommercegq.Admin
             clear();
         }
 
-        public void clear()
+        void clear()
         {
             txtCategoryName.Text = string.Empty;
             cbIsActive.Checked = false;
@@ -133,13 +133,13 @@ namespace Ecommercegq.Admin
 
             if (e.CommandName == "edit")
             {
-                MySqlConnection con = new MySqlConnection(Utils.getConnection());
-                MySqlCommand cmd = new MySqlCommand("Category_Crud", con);
+                con = new MySqlConnection(Utils.getConnection());
+                cmd = new MySqlCommand("Category_Crud", con);
 
                 cmd.Parameters.AddWithValue("?in_Action", "GETBYID");
                 cmd.Parameters.AddWithValue("?in_CategoryId", Convert.ToInt32(e.CommandArgument));
                 cmd.CommandType = CommandType.StoredProcedure;
-                MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+                sda = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 sda.Fill(dt);
                 cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
@@ -155,8 +155,8 @@ namespace Ecommercegq.Admin
             }
             else if (e.CommandName == "delete")
             {
-                MySqlConnection con = new MySqlConnection(Utils.getConnection());
-                MySqlCommand cmd = new MySqlCommand("Category_Crud", con);
+                con = new MySqlConnection(Utils.getConnection());
+                cmd = new MySqlCommand("Category_Crud", con);
                 cmd.Parameters.AddWithValue("?in_Action", "DELETE");
                 cmd.Parameters.AddWithValue("?in_CategoryId", Convert.ToInt32(e.CommandArgument));
                 cmd.CommandType = CommandType.StoredProcedure;

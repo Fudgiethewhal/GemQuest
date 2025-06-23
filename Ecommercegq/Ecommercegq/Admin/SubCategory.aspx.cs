@@ -32,8 +32,8 @@ namespace Ecommercegq.Admin
 
         void getCategories()
         {
-            MySqlConnection con = new MySqlConnection(Utils.getConnection());
-            MySqlCommand cmd = new MySqlCommand("Category_Crud", con);
+            con = new MySqlConnection(Utils.getConnection());
+            cmd = new MySqlCommand("Category_Crud", con);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("?in_Action", "GETALL");
@@ -42,9 +42,9 @@ namespace Ecommercegq.Admin
             cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
             cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
 
-            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+            sda = new MySqlDataAdapter(cmd);
 
-            DataTable dt = new DataTable();
+            dt = new DataTable();
             sda.Fill(dt);
             ddlCategory.DataSource = dt;
             ddlCategory.DataTextField = "CategoryName";
@@ -55,8 +55,8 @@ namespace Ecommercegq.Admin
 
         void getSubCategories()
         {
-            MySqlConnection con = new MySqlConnection(Utils.getConnection());
-            MySqlCommand cmd = new MySqlCommand("Category_Crud", con);
+            con = new MySqlConnection(Utils.getConnection());
+            cmd = new MySqlCommand("Category_Crud", con);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("?in_Action", "GETALL");
@@ -64,8 +64,8 @@ namespace Ecommercegq.Admin
             cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
             cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
             cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
-            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
+            sda = new MySqlDataAdapter(cmd);
+            dt = new DataTable();
             sda.Fill(dt);
             rSubCategory.DataSource = dt;            
             rSubCategory.DataBind();
@@ -78,8 +78,8 @@ namespace Ecommercegq.Admin
         {
             string actionName = string.Empty;
             int subCategoryId = Convert.ToInt32(hfSubCategoryId.Value);
-            MySqlConnection con = new MySqlConnection(Utils.getConnection());
-            MySqlCommand cmd = new MySqlCommand("SubCategory_Crud", con);
+            con = new MySqlConnection(Utils.getConnection());
+            cmd = new MySqlCommand("SubCategory_Crud", con);
             cmd.Parameters.AddWithValue("?in_Action", subCategoryId == 0 ? "INSERT" : "UPDATE");
             cmd.Parameters.AddWithValue("?in_SubCategoryId", subCategoryId);
             cmd.Parameters.AddWithValue("?in_SubCategoryName", txtSubCategoryName.Text.Trim());
@@ -127,13 +127,13 @@ namespace Ecommercegq.Admin
             lblMsg.Visible = false;
             if (e.CommandName == "edit")
             {
-                MySqlConnection con = new MySqlConnection(Utils.getConnection());
-                MySqlCommand cmd = new MySqlCommand("SubCategory_Crud", con);
+                con = new MySqlConnection(Utils.getConnection());
+                cmd = new MySqlCommand("SubCategory_Crud", con);
 
                 cmd.Parameters.AddWithValue("?in_Action", "GETBYID");
                 cmd.Parameters.AddWithValue("?in_SubCategoryId", Convert.ToInt32(e.CommandArgument));
                 cmd.CommandType = CommandType.StoredProcedure;
-                MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+                sda = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 sda.Fill(dt);
                 cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
@@ -147,8 +147,8 @@ namespace Ecommercegq.Admin
             }
             else if (e.CommandName == "delete")
             {
-                MySqlConnection con = new MySqlConnection(Utils.getConnection());
-                MySqlCommand cmd = new MySqlCommand("SubCategory_Crud", con);
+                con = new MySqlConnection(Utils.getConnection());
+                cmd = new MySqlCommand("SubCategory_Crud", con);
                 cmd.Parameters.AddWithValue("?in_Action", "DELETE");
                 cmd.Parameters.AddWithValue("?in_SubCategoryId", Convert.ToInt32(e.CommandArgument));
                 cmd.CommandType = CommandType.StoredProcedure;

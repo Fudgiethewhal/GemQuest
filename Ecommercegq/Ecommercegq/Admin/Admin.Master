@@ -169,7 +169,23 @@
                                 aria-expanded="false"><i class="fas fa-tags"></i><span
                                     class="hide-menu">Sub-Category</span>
                             </a>
-                        </li>           
+                        </li>
+                        <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Products</span></li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="Product.aspx"
+                            aria-expanded="false"><i class="fas fa-tag"></i>
+                            <span class="hide-menu">Product</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="ProductList.aspx"
+                                aria-expanded="false"><i class="fas fa-tags"></i><span
+                                    class="hide-menu">ProductList</span>
+                            </a>
+                        </li>
+
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Components</span></li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
