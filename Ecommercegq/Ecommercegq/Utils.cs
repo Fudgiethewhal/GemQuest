@@ -5,6 +5,8 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Web;
+using System.IO;
+using System.Web.UI.WebControls;
 
 namespace Ecommercegq
 {
@@ -54,6 +56,28 @@ namespace Ecommercegq
                 url1 = string.Format("../{0}", url);
             }
             return url1;
+        }
+
+        public static string[] getImagesPath(string[] images)
+        {
+            List<string> list = new List<string>(); 
+            string fileExtension = string.Empty;
+            for (int i = 0; i <= images.Length -1; i++)
+            {
+                fileExtension = Path.GetExtension(images[i]);
+                list.Add("Images/Product/" + getUniqueId().ToString() + fileExtension);
+            }
+            return list.ToArray();
+        }
+
+        public static string getItemWithCommaSeparater(ListBox listBox)
+        {
+            string selectedItem = string.Empty;
+            foreach (var item in listBox.GetSelectedIndices())
+            {
+                selectedItem += listBox.Items[item].Text + ",";    
+            }
+            return selectedItem;
         }
     }
 }

@@ -197,7 +197,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                       <%-- <div class="row">
                             <div class="col-md-12">
                                 <label>Tags(Search Keyword)</label>
                                 <div class="form-group">
@@ -208,7 +208,7 @@
                                         ErrorMessage="Product Tags is required"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                        </div>
+                        </div>--%>
 
                         <div class="row">
                             <div class="col-md-6">
@@ -252,9 +252,9 @@
                                 <div class="form-group">
                                     <asp:RadioButtonList ID="rblDefaultImage" runat="server" RepeatDirection="Horizontal">
                                         <asp:ListItem Value="1">&nbsp;First&nbsp;</asp:ListItem>
-                                        <asp:ListItem Value="1">&nbsp;Second&nbsp;</asp:ListItem>
-                                        <asp:ListItem Value="1">&nbsp;Third&nbsp;</asp:ListItem>
-                                        <asp:ListItem Value="1">&nbsp;Fourth&nbsp;</asp:ListItem>
+                                        <asp:ListItem Value="2">&nbsp;Second&nbsp;</asp:ListItem>
+                                        <asp:ListItem Value="3">&nbsp;Third&nbsp;</asp:ListItem>
+                                        <asp:ListItem Value="4">&nbsp;Fourth&nbsp;</asp:ListItem>
                                     </asp:RadioButtonList>
                                     <asp:RequiredFieldValidator ID="rfvDefaultImage" runat="server" ForeColor="Red" Font-Size="Small"
                                         Display="Dynamic" SetFocusOnError="true" ControlToValidate="rblDefaultImage"
