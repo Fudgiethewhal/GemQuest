@@ -80,7 +80,7 @@ namespace Ecommercegq
                     if (productId == 0)
                     {
                         cmd = new MySqlCommand("Product_Crud", con, transaction);
-                        cmd.Parameters.AddWithValue("?in_Action", "RECENTPRODUCT");
+                        cmd.Parameters.AddWithValue("?in_Action", "RECENT_PRODUCT");
                         cmd.CommandType = CommandType.StoredProcedure;
                         sdr = cmd.ExecuteReader();
                         while (sdr.Read())

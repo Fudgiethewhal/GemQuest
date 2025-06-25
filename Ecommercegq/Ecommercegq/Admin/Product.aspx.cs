@@ -87,124 +87,215 @@ namespace Ecommercegq.Admin
                 string selectedColor = string.Empty;
                 string selectedSize = string.Empty;
                 bool isValid = false;
+                bool isValidToExecute = false;
                 List<string> list = new List<string>();
                 bool isImageSaved = false;
-                if (fuFirstImage.HasFile && fuSecondImage.HasFile && fuThirdImage.HasFile && fuFourthImage.HasFile)
+                if (Request.QueryString["id"] == null)
                 {
-                    list.Add(fuFirstImage.FileName);
-                    list.Add(fuSecondImage.FileName);
-                    list.Add(fuThirdImage.FileName);
-                    list.Add(fuFourthImage.FileName);
-                    string[] fu = list.ToArray();
+                    if (fuFirstImage.HasFile && fuSecondImage.HasFile && fuThirdImage.HasFile && fuFourthImage.HasFile)
+                    {
+                        list.Add(fuFirstImage.FileName);
+                        list.Add(fuSecondImage.FileName);
+                        list.Add(fuThirdImage.FileName);
+                        list.Add(fuFourthImage.FileName);
+                        string[] fu = list.ToArray();
 
-                    #region validate images
-                    for (int i = 0; i < fu.Length; i++)
-                    {
-                        if (Utils.isValidExtension(fu[i])) // validating image type
+                        #region validate images
+                        for(int i = 0; i <= fu.Length - 1; i++)
                         {
-                            isValid = true;
-                        }
-                        else
-                        {
-                            isValid = false;
-                            break;
-                        }
-                    }
-                    #endregion
-                    #region After image validation proceeding to add product
-                    if (isValid)
-                    {
-                        imagePath = Utils.getImagesPath(fu); // getting unique image path
-                        for (int i = 0; i <= imagePath.Length -1; i++)
-                        {
-                            for (int j = i; j <= rblDefaultImage.Items.Count -1;)
+                            if (Utils.isValidExtension(fu[i])) // validating image type
                             {
-                                productImages.Add
-                                (
-                                    new ProductImageObj()
-                                    {
-                                        ImageUrl = imagePath[i],
-                                        DefaultImage = Convert.ToBoolean(rblDefaultImage.Items[j].Selected)//getting default image 
-                                    }
-                                );
+                                isValid = true;
+                            }
+                            else
+                            {
+                                isValid = false;
                                 break;
                             }
-                            #region saving images to folder
-                            if (i == 0)
-                            {
-                                fuFirstImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
-                                isImageSaved = true;
-                            }
-                            else if (i == 1)
-                            {
-                                fuSecondImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
-                                isImageSaved = true;
-                            }
-                            else if (i == 2)
-                            {
-                                fuThirdImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
-                                isImageSaved = true;
-                            }
-                            else if (i == 3)
-                            {
-                                fuFourthImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
-                                isImageSaved = true;
-                            }                            
-                            #endregion
                         }
-
-                        #region saving new product
-                        if (isImageSaved)
+                        #endregion
+                        #region After image validation proceeding to add product
+                        if (isValid)
                         {
-                            selectedColor = Utils.getItemWithCommaSeparater(lboxColor);
-                            selectedSize = Utils.getItemWithCommaSeparater(lboxSize);
-                            productDAL = new ProductDAL();
-                            productObj = new ProductObj()
+                            imagePath = Utils.getImagesPath(fu); // getting unique image path
+                            for (int i = 0; i <= imagePath.Length - 1; i++)
                             {
-                                ProductId = 0,
-                                ProductName = txtProductName.Text.Trim(),
-                                ShortDescription = txtShortDescription.Text.Trim(),
-                                LongDescription = txtLongDescription.Text.Trim(),
-                                AdditionalDescription = txtAdditionalDescription.Text.Trim(),
-                                Price = Convert.ToDecimal(txtPrice.Text.Trim()),
-                                Quantity = Convert.ToInt32(txtQuantity.Text.Trim()),
-                                Size = selectedSize,
-                                Color = selectedColor,
-                                CompanyName = txtCompanyName.Text.Trim(),
-                                CategoryId = Convert.ToInt32(ddlCategory.SelectedValue),
-                                SubCategoryId = Convert.ToInt32(ddlSubCategory.SelectedValue),
-                                IsCustomized = cbIsCustomized.Checked,
-                                IsActive = cbIsActive.Checked,
-                                ProductImages = productImages
-                            };
-                            int r = productDAL.AddUpdateProduct(productObj);
-                            if (r > 0)
+                                for (int j = i; j <= rblDefaultImage.Items.Count - 1;)
+                                {
+                                    productImages.Add
+                                    (
+                                        new ProductImageObj()
+                                        {
+                                            ImageUrl = imagePath[i],
+                                            DefaultImage = Convert.ToBoolean(rblDefaultImage.Items[j].Selected)//getting default image 
+                                        }
+                                    );
+                                    break;
+                                }
+                                #region saving images to folder
+                                if (i == 0)
+                                {
+                                    fuFirstImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
+                                    isImageSaved = true;
+                                }
+                                else if (i == 1)
+                                {
+                                    fuSecondImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
+                                    isImageSaved = true;
+                                }
+                                else if (i == 2)
+                                {
+                                    fuThirdImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
+                                    isImageSaved = true;
+                                }
+                                else if (i == 3)
+                                {
+                                    fuFourthImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
+                                    isImageSaved = true;
+                                }
+                                #endregion
+                            }
+
+                            #region saving new product
+                            if (isImageSaved)
                             {
-                                DisplayMessage("Product saved successfully.", "success");
+                                selectedColor = Utils.getItemWithCommaSeparater(lboxColor);
+                                selectedSize = Utils.getItemWithCommaSeparater(lboxSize);
+                                productDAL = new ProductDAL();
+                                productObj = new ProductObj()
+                                {
+                                    ProductId = 0,
+                                    ProductName = txtProductName.Text.Trim(),
+                                    ShortDescription = txtShortDescription.Text.Trim(),
+                                    LongDescription = txtLongDescription.Text.Trim(),
+                                    AdditionalDescription = txtAdditionalDescription.Text.Trim(),
+                                    Price = Convert.ToDecimal(txtPrice.Text.Trim()),
+                                    Quantity = Convert.ToInt32(txtQuantity.Text.Trim()),
+                                    Size = selectedSize,
+                                    Color = selectedColor,
+                                    CompanyName = txtCompanyName.Text.Trim(),
+                                    CategoryId = Convert.ToInt32(ddlCategory.SelectedValue),
+                                    SubCategoryId = Convert.ToInt32(ddlSubCategory.SelectedValue),
+                                    IsCustomized = cbIsCustomized.Checked,
+                                    IsActive = cbIsActive.Checked,
+                                    ProductImages = productImages
+                                };
+                                int r = productDAL.AddUpdateProduct(productObj);
+                                if (r > 0)
+                                {
+                                    DisplayMessage("Product saved successfully.", "success");
+                                }
+                                else
+                                {
+                                    DeleteFile(imagePath);
+                                    DisplayMessage("Cannot save record at this moment.", "warning");
+                                }
                             }
                             else
                             {
                                 DeleteFile(imagePath);
-                                DisplayMessage("Cannot save record at this moment.", "warning");
                             }
+                            #endregion
                         }
                         else
                         {
-                            DeleteFile(imagePath);
+                            DisplayMessage("Please upload valid image files (jpg, jpeg, png).", "warning");
                         }
                         #endregion
                     }
                     else
                     {
-                        DisplayMessage("Please upload valid image files (jpg, jpeg, png).", "warning");
+                        DisplayMessage("Please select all product images", "warning");
                     }
-                    #endregion
                 }
-                else
+                else 
                 {
-                    DisplayMessage("Please select all product images", "warning");
+                    if (fuFirstImage.HasFile && fuSecondImage.HasFile && fuThirdImage.HasFile && fuFourthImage.HasFile)
+                    {
+                        list.Add(fuFirstImage.FileName);
+                        list.Add(fuSecondImage.FileName);
+                        list.Add(fuThirdImage.FileName);
+                        list.Add(fuFourthImage.FileName);
+                        string[] fu = list.ToArray();
+
+                        #region validate images
+                        for (int i = 0; i <= fu.Length -1; i++)
+                        {
+                            if (Utils.isValidExtension(fu[i])) // validating image type
+                            {
+                                isValid = true;
+                            }
+                            else
+                            {
+                                isValid = false;
+                                break;
+                            }
+                        }
+                        #endregion
+
+                        #region After image validation proceeding to add product
+                        if (isValid)
+                        {
+                            imagePath = Utils.getImagesPath(fu); // getting unique image path
+                            for (int i = 0; i <= imagePath.Length - 1; i++)
+                            {
+                                for (int j = i; j <= rblDefaultImage.Items.Count - 1;)
+                                {
+                                    productImages.Add
+                                    (
+                                        new ProductImageObj()
+                                        {
+                                            ImageUrl = imagePath[i],
+                                            DefaultImage = Convert.ToBoolean(rblDefaultImage.Items[j].Selected)//getting default image 
+                                        }
+                                    );
+                                    break;
+                                }
+                                #region saving images to folder
+                                if (i == 0)
+                                {
+                                    fuFirstImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
+                                    isImageSaved = true;
+                                }
+                                else if (i == 1)
+                                {
+                                    fuSecondImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
+                                    isImageSaved = true;
+                                }
+                                else if (i == 2)
+                                {
+                                    fuThirdImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
+                                    isImageSaved = true;
+                                }
+                                else if (i == 3)
+                                {
+                                    fuFourthImage.PostedFile.SaveAs(Server.MapPath("~/Images/Product/") + imagePath[i].Replace("Images/Product/", ""));
+                                    isImageSaved = true;
+                                }
+                                #endregion
+                            }
+                             
+                            if (isImageSaved)
+                            {
+                                isValidToExecute = true;
+                            }
+                            else
+                            {
+                                DeleteFile(imagePath);
+                            }                            
+                        }
+                        else
+                        {
+                            DisplayMessage("Please upload valid image files (jpg, jpeg, png).", "warning");
+                        }
+                        #endregion
+                    }
+                    else if (fuFirstImage.HasFile || fuSecondImage.HasFile || fuThirdImage.HasFile || fuFourthImage.HasFile)
+                    {
+                       DisplayMessage("Please add all 4 product images if you want to update images", "warning");
+                    }
                 }
-                    
+                                    
             }
             catch (Exception ex)
             {
