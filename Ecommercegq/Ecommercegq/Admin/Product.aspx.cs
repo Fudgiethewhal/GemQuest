@@ -219,7 +219,7 @@ namespace Ecommercegq.Admin
 
         void DeleteFile(string[] filePath)
         {
-            for (int i = 0; i < filePath.Length -1; i++)
+            for (int i = 0; i <= filePath.Length -1; i++)
             {
                 if (File.Exists(Server.MapPath("~/" + filePath[i])))
                 {

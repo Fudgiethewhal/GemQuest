@@ -19,7 +19,7 @@
                         $('#<%=imageProduct1.ClientID%>').show();
                         $('#<%=imageProduct1.ClientID%>').prop('src', e.target.result).width(200).height(200);
                     } else if (controlName == 'fuSecondImage') {
-                        $('#<%=imageProduct1.ClientID%>').show();
+                        $('#<%=imageProduct2.ClientID%>').show();
                         $('#<%=imageProduct2.ClientID%>').prop('src', e.target.result).width(200).height(200);
                     } else if (controlName == 'fuThirdImage') {
                         $('#<%=imageProduct3.ClientID%>').show();
