@@ -113,7 +113,8 @@
                                             <i class="fas fa-edit"></i>
                                         </asp:LinkButton>
                                         <asp:LinkButton ID="lblDelete" Text="Delete" runat="server" CssClass="badge badge-danger">
-                                          CommandArgument='<%# Eval("SubCategoryId") %>' CommandName="delete" CausesValidation="false">
+                                          CommandArgument='<%# Eval("SubCategoryId") %>' CommandName="delete" CausesValidation="false"
+                                            OnClientClick="return confirm('Do you want to delete this product?');>
                                             <i class="fas fa-trash-alt"></i>
                                         </asp:LinkButton>
                                     </td>

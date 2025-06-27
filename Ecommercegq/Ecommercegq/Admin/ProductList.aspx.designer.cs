@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ecommercegq.User
+namespace Ecommercegq.Admin
 {
 
 
-    public partial class Shop
+    public partial class ProductList
     {
 
         /// <summary>
@@ -24,12 +24,12 @@ namespace Ecommercegq.User
         protected global::System.Web.UI.WebControls.Label lblMsg;
 
         /// <summary>
-        /// txtSearchInput control.
+        /// rProductList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchInput;
+        protected global::System.Web.UI.WebControls.Repeater rProductList;
     }
 }

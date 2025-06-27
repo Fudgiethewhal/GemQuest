@@ -90,7 +90,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Category List</h4>
                     <hr />
-                    <div>
+                    <div class="table-responsive">
                         <asp:Repeater ID="rCategory" runat="server" OnItemCommand="rCategory_ItemCommand">
                             <HeaderTemplate>
                                 <table class="table data-table-export table-hover nowrap">
@@ -125,7 +125,8 @@
                                             <i class="fas fa-edit"></i>
                                         </asp:LinkButton>
                                         <asp:LinkButton ID="lblDelete" Text="Delete" runat="server" CssClass="badge badge-danger">
-                                          CommandArgument='<%# Eval("CategoryId") %>' CommandName="delete" CausesValidation="false">
+                                          CommandArgument='<%# Eval("CategoryId") %>' CommandName="delete" CausesValidation="false"
+                                            OnClientClick="return confirm('Do you want to delete this product?');>
                                             <i class="fas fa-trash-alt"></i>
                                         </asp:LinkButton>
                                     </td>

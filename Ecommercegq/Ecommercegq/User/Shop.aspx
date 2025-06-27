@@ -1,5 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/User.Master" AutoEventWireup="true" CodeBehind="Shop.aspx.cs" Inherits="Ecommercegq.User.Shop" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+window.onload = function () {
+    var seconds = 5;
+    setTimeout(function () {
+        document.getElementById("<%=lblMsg.ClientID %>").style.display = "none";
+    }, seconds * 1000);
+};
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -15,13 +23,16 @@
         </div>
     </div>
     <!-- Page Header End -->
-
+    
+    <div class="mb-4">
+        <asp:Label ID="lblMsg" runat="server"></asp:Label>
+    </div>
 
     <!-- Shop Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
-            <div class="col-lg-3 col-md-12">
+            <%--<div class="col-lg-3 col-md-12">
                 <!-- Price Start -->
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
@@ -135,25 +146,25 @@
                     </form>
                 </div>
                 <!-- Size End -->
-            </div>
+            </div>--%>
             <!-- Shop Sidebar End -->
 
 
             <!-- Shop Product Start -->
-            <div class="col-lg-9 col-md-12">
+            <div class="col-lg-12 col-md-12">
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="">
+                            <div action="">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search by name">
+                                    <input type="text" id="txtSearchInput" runat="server" class="form-control" placeholder="Search by name" autocomplete="off">
                                     <div class="input-group-append">
                                         <span class="input-group-text bg-transparent text-primary">
                                             <i class="fa fa-search"></i>
                                         </span>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                             <div class="dropdown ml-4">
                                 <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
