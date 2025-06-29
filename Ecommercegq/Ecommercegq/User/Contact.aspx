@@ -49,7 +49,8 @@
                             <p class="help-block text-danger"></p>
                         </div>
                         <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send
+                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">
+                                Send
                                 Message</button>
                         </div>
                     </form>
