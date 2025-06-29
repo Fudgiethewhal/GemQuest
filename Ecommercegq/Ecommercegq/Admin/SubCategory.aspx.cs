@@ -56,14 +56,13 @@ namespace Ecommercegq.Admin
         void getSubCategories()
         {
             con = new MySqlConnection(Utils.getConnection());
-            cmd = new MySqlCommand("Category_Crud", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
+            cmd = new MySqlCommand("SubCategory_Crud", con);
             cmd.Parameters.AddWithValue("?in_Action", "GETALL");
             cmd.Parameters.AddWithValue("?in_CategoryId", DBNull.Value);
             cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
             cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
             cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
+            cmd.CommandType = CommandType.StoredProcedure;
             sda = new MySqlDataAdapter(cmd);
             dt = new DataTable();
             sda.Fill(dt);
@@ -89,6 +88,7 @@ namespace Ecommercegq.Admin
             try
             {
                 con.Open();
+                cmd.ExecuteNonQuery();
                 actionName = subCategoryId == 0 ? "inserted" : "updated";
                 lblMsg.Visible = true;
                 lblMsg.Text = "Sub-Category " + actionName + " successfully!";
@@ -142,7 +142,7 @@ namespace Ecommercegq.Admin
                 txtSubCategoryName.Text = dt.Rows[0]["SubCategoryName"].ToString();
                 cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
                 ddlCategory.SelectedValue = dt.Rows[0]["CategoryId"].ToString();
-                hfSubCategoryId.Value = dt.Rows[0]["CategoryId"].ToString();
+                hfSubCategoryId.Value = dt.Rows[0]["SubCategoryId"].ToString();
                 btnAddOrUpdate.Text = "Update";
             }
             else if (e.CommandName == "delete")

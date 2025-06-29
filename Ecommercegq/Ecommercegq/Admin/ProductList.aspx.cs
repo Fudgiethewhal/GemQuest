@@ -75,5 +75,21 @@ namespace Ecommercegq.Admin
                 }
             }
         }
+
+        protected void rProductList_ItemDataBound(RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                Label lbQuantity = e.Item.FindControl("lblQuantity") as Label;
+
+                if (Convert.ToInt32(lbQuantity.Text) <= 5)
+                {
+                    lbQuantity.CssClass = "badge badge-danger";
+                    lbQuantity.ToolTip = "Item about to be out of stock!";
+                }
+                
+
+            }
+        }
     }
 }
