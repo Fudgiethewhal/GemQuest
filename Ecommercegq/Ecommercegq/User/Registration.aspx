@@ -11,6 +11,7 @@
 <script>
     function ImagePreview(input) {
         if (input.files && input.files[0]) {
+            $('#<%=imgUser.ClientID%>').show();
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#<%=imgUser.ClientID%>').prop('src', e.target.result)
