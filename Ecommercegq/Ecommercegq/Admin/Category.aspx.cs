@@ -32,11 +32,11 @@ namespace Ecommercegq.Admin
             cmd = new MySqlCommand("Category_Crud", con);
             
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("?in_Action", "GETALL");
-                cmd.Parameters.AddWithValue("?in_CategoryId", DBNull.Value);
-                cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
-                cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
-                cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_Action", "GETALL");
+                cmd.Parameters.AddWithValue("in_CategoryId", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
 
             sda = new MySqlDataAdapter(cmd);
                 
@@ -55,10 +55,10 @@ namespace Ecommercegq.Admin
             int categoryId = Convert.ToInt32(hfCategoryId.Value);
             con = new MySqlConnection(Utils.getConnection());
             cmd = new MySqlCommand("Category_Crud", con);        
-            cmd.Parameters.AddWithValue("?in_Action", categoryId == 0 ? "INSERT" : "UPDATE");
-            cmd.Parameters.AddWithValue("?in_CategoryId", categoryId);
-            cmd.Parameters.AddWithValue("?in_CategoryName", txtCategoryName.Text.Trim());
-            cmd.Parameters.AddWithValue("?in_IsActive", cbIsActive.Checked);
+            cmd.Parameters.AddWithValue("Action", categoryId == 0 ? "INSERT" : "UPDATE");
+            cmd.Parameters.AddWithValue("in_CategoryId", categoryId);
+            cmd.Parameters.AddWithValue("in_CategoryName", txtCategoryName.Text.Trim());
+            cmd.Parameters.AddWithValue("in_IsActive", cbIsActive.Checked);
                 if (fuCategoryImage.HasFile)
                 {
                     if(Utils.isValidExtension(fuCategoryImage.FileName))
@@ -67,7 +67,7 @@ namespace Ecommercegq.Admin
                         fileExtension = Path.GetExtension(fuCategoryImage.FileName);
                         imagePath = "Images/Category/" + newImageName.ToString() + fileExtension;
                         fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + newImageName.ToString() + fileExtension);
-                        cmd.Parameters.AddWithValue("?in_CategoryImageUrl", imagePath);
+                        cmd.Parameters.AddWithValue("in_CategoryImageUrl", imagePath);
                         isValidToExecute = true;
                     }
                     else
@@ -136,15 +136,15 @@ namespace Ecommercegq.Admin
                 con = new MySqlConnection(Utils.getConnection());
                 cmd = new MySqlCommand("Category_Crud", con);
 
-                cmd.Parameters.AddWithValue("?in_Action", "GETBYID");
-                cmd.Parameters.AddWithValue("?in_CategoryId", Convert.ToInt32(e.CommandArgument));
+                cmd.Parameters.AddWithValue("in_Action", "GETBYID");
+                cmd.Parameters.AddWithValue("in_CategoryId", Convert.ToInt32(e.CommandArgument));
                 cmd.CommandType = CommandType.StoredProcedure;
                 sda = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 sda.Fill(dt);
-                cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
-                cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
-                cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
                 txtCategoryName.Text = dt.Rows[0]["CategoryName"].ToString();
                 cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
                 imagePreview.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["CategoryImageUrl"].ToString()) ? "../Images/No_image.png" : "../" + dt.Rows[0]["CategoryImageUrl"].ToString();
@@ -157,8 +157,8 @@ namespace Ecommercegq.Admin
             {
                 con = new MySqlConnection(Utils.getConnection());
                 cmd = new MySqlCommand("Category_Crud", con);
-                cmd.Parameters.AddWithValue("?in_Action", "DELETE");
-                cmd.Parameters.AddWithValue("?in_CategoryId", Convert.ToInt32(e.CommandArgument));
+                cmd.Parameters.AddWithValue("in_Action", "DELETE");
+                cmd.Parameters.AddWithValue("in_CategoryId", Convert.ToInt32(e.CommandArgument));
                 cmd.CommandType = CommandType.StoredProcedure;
                 try
                 {

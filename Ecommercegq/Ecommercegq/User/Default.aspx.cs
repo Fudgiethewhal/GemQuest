@@ -27,11 +27,11 @@ namespace Ecommercegq.User
         {
             con = new MySqlConnection(Utils.getConnection());
             cmd = new MySqlCommand("Category_Crud", con);
-            cmd.Parameters.AddWithValue("?in_Action", "ACTIVECATEGORY");
-            cmd.Parameters.AddWithValue("?in_CategoryId", DBNull.Value);
-            cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
-            cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
-            cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_Action", "ACTIVECATEGORY");
+            cmd.Parameters.AddWithValue("in_CategoryId", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
             cmd.CommandType = CommandType.StoredProcedure;
             sda = new MySqlDataAdapter(cmd);
             dt = new DataTable();

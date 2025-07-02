@@ -43,9 +43,10 @@ namespace Ecommercegq.User
             try 
             {
                 using(con = new MySqlConnection(Utils.getConnection()))
-                {                    
+                {
+                    con.Open();                
                     cmd = new MySqlCommand("Product_Crud", con);
-                    cmd.Parameters.AddWithValue("?in_Action", "ACTIVEPRODUCT");
+                    cmd.Parameters.AddWithValue("in_Action", "ACTIVEPRODUCT");
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -79,8 +80,8 @@ namespace Ecommercegq.User
                 {
                     int categoryId = Convert.ToInt32(Request.QueryString["cid"]);
                     cmd = new MySqlCommand("Product_Crud", con);
-                    cmd.Parameters.AddWithValue("?in_Action", "PRDTBYCATEGORY");
-                    cmd.Parameters.AddWithValue("?in_CategoryId", categoryId);
+                    cmd.Parameters.AddWithValue("in_Action", "PRDTBYCATEGORY");
+                    cmd.Parameters.AddWithValue("in_CategoryId", categoryId);
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -114,8 +115,8 @@ namespace Ecommercegq.User
                 {
                     int subCategoryId = Convert.ToInt32(Request.QueryString["sid"]);
                     cmd = new MySqlCommand("Product_Crud", con);
-                    cmd.Parameters.AddWithValue("?in_Action", "PRDTBYSUBCATEGORY");
-                    cmd.Parameters.AddWithValue("?in_SubCategoryId", subCategoryId);
+                    cmd.Parameters.AddWithValue("in_Action", "PRDTBYSUBCATEGORY");
+                    cmd.Parameters.AddWithValue("in_SubCategoryId", subCategoryId);
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -144,7 +145,7 @@ namespace Ecommercegq.User
         private sealed class CustomTemplate : ITemplate
         {
             private ListItemType ListItemType { get; set; }
-            public CustomTemplate(ListItemType footer)
+            public CustomTemplate(ListItemType listItemType)
             {
                 ListItemType = ListItemType;
             }
@@ -190,6 +191,15 @@ namespace Ecommercegq.User
             }
         }      
 
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            rProducts.DataSource = null;
+            rProducts.DataSource = (DataTable)Session["product"];
+            rProducts.DataBind();
+            txtSearchInput.Value = string.Empty;
+        }
+
         protected void ddlSortBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSortBy.SelectedValue != "0")
@@ -233,15 +243,6 @@ namespace Ecommercegq.User
                 }
             }
         }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            rProducts.DataSource = null;
-            rProducts.DataSource = (DataTable)Session["product"];
-            rProducts.DataBind();
-            txtSearchInput.Value = string.Empty;
-        }
-
         protected void btnSortReset_Click(object sender, EventArgs e)
         {
             rProducts.DataSource = null;

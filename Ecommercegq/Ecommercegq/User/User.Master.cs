@@ -57,6 +57,10 @@ namespace Ecommercegq.User
                 cmd = new MySqlCommand("SubCategory_Crud", con);
                 cmd.Parameters.AddWithValue("in_Action", "ACTIVEBYID");
                 cmd.Parameters.AddWithValue("in_CategoryId", Convert.ToInt32(categoryId.Value));
+                cmd.Parameters.AddWithValue("in_SubCategoryId", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value); 
+                cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
                 cmd.CommandType = CommandType.StoredProcedure;
                 sda = new MySqlDataAdapter(cmd);
                 dt = new DataTable();

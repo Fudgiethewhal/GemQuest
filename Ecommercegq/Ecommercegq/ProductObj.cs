@@ -64,23 +64,23 @@ namespace Ecommercegq
 
 
                     cmd = new MySqlCommand("Product_Crud", con, transaction);
-                    cmd.Parameters.AddWithValue("?in_Action", productId == 0 ? "INSERT" : "UPDATE");
-                    cmd.Parameters.AddWithValue("?in_ProductName", productBO.ProductName);
-                    cmd.Parameters.AddWithValue("?in_ShortDescription", productBO.ShortDescription);
-                    cmd.Parameters.AddWithValue("?in_LongDescription", productBO.LongDescription);
-                    cmd.Parameters.AddWithValue("?in_AdditionalDescription", productBO.AdditionalDescription);
-                    cmd.Parameters.AddWithValue("?in_Price", productBO.Price);
-                    cmd.Parameters.AddWithValue("?in_Quantity", productBO.Quantity);
-                    cmd.Parameters.AddWithValue("?in_Size", productBO.Size);
-                    cmd.Parameters.AddWithValue("?in_Color", productBO.Color);
-                    cmd.Parameters.AddWithValue("?in_CompanyName", productBO.CompanyName);
-                    cmd.Parameters.AddWithValue("?in_CategoryId", productBO.CategoryId);
-                    cmd.Parameters.AddWithValue("?in_SubCategoryId", productBO.SubCategoryId);
-                    cmd.Parameters.AddWithValue("?in_IsCustomized", productBO.IsCustomized);
-                    cmd.Parameters.AddWithValue("?in_IsActive", productBO.IsActive);
+                    cmd.Parameters.AddWithValue("in_Action", productId == 0 ? "INSERT" : "UPDATE");
+                    cmd.Parameters.AddWithValue("in_ProductName", productBO.ProductName);
+                    cmd.Parameters.AddWithValue("in_ShortDescription", productBO.ShortDescription);
+                    cmd.Parameters.AddWithValue("in_LongDescription", productBO.LongDescription);
+                    cmd.Parameters.AddWithValue("in_AdditionalDescription", productBO.AdditionalDescription);
+                    cmd.Parameters.AddWithValue("in_Price", productBO.Price);
+                    cmd.Parameters.AddWithValue("in_Quantity", productBO.Quantity);
+                    cmd.Parameters.AddWithValue("in_Size", productBO.Size);
+                    cmd.Parameters.AddWithValue("in_Color", productBO.Color);
+                    cmd.Parameters.AddWithValue("in_CompanyName", productBO.CompanyName);
+                    cmd.Parameters.AddWithValue("in_CategoryId", productBO.CategoryId);
+                    cmd.Parameters.AddWithValue("in_SubCategoryId", productBO.SubCategoryId);
+                    cmd.Parameters.AddWithValue("in_IsCustomized", productBO.IsCustomized);
+                    cmd.Parameters.AddWithValue("in_IsActive", productBO.IsActive);
                     if (productId > 0)
                     {
-                        cmd.Parameters.AddWithValue("?in_ProductId", productBO.ProductId);
+                        cmd.Parameters.AddWithValue("in_ProductId", productBO.ProductId);
                         type = "update";
                     }
 
@@ -90,12 +90,12 @@ namespace Ecommercegq
                     if (productId == 0)
                     {
                         cmd = new MySqlCommand("Product_Crud", con, transaction);
-                        cmd.Parameters.AddWithValue("?in_Action", "RECENT_PRODUCT");
+                        cmd.Parameters.AddWithValue("in_Action", "RECENT_PRODUCT");
                         cmd.CommandType = CommandType.StoredProcedure;
                         sdr = cmd.ExecuteReader();
                         while (sdr.Read())
                         {
-                            productId = (int)sdr["ProductId"];
+                            productId = Convert.ToInt32(sdr["ProductId"]);
                         }
                         sdr.Close();  
                     }
@@ -109,10 +109,10 @@ namespace Ecommercegq
                             foreach (var image in productImages)
                             {
                                 cmd = new MySqlCommand("Product_Crud", con, transaction);
-                                cmd.Parameters.AddWithValue("?in_Action", "INSERT_PROD_IMG");
-                                cmd.Parameters.AddWithValue("?in_ImageUrl", image.ImageUrl);
-                                cmd.Parameters.AddWithValue("?in_ProductId", productId);
-                                cmd.Parameters.AddWithValue("?in_DefaultImage", image.DefaultImage);
+                                cmd.Parameters.AddWithValue("in_Action", "INSERT_PROD_IMG");
+                                cmd.Parameters.AddWithValue("in_ImageUrl", image.ImageUrl);
+                                cmd.Parameters.AddWithValue("in_ProductId", productId);
+                                cmd.Parameters.AddWithValue("in_DefaultImage", image.DefaultImage);
                                 cmd.CommandType = CommandType.StoredProcedure;
                                 cmd.ExecuteNonQuery();
                                 result = 1;
@@ -124,8 +124,8 @@ namespace Ecommercegq
                             if (productImages.Count != 0)
                             {
                                 cmd = new MySqlCommand("Product_Crud", con, transaction);
-                                cmd.Parameters.AddWithValue("?in_Action", "DELETE_PROD_IMG");
-                                cmd.Parameters.AddWithValue("?in_ProductId", productId);
+                                cmd.Parameters.AddWithValue("in_Action", "DELETE_PROD_IMG");
+                                cmd.Parameters.AddWithValue("in_ProductId", productId);
                                 cmd.CommandType = CommandType.StoredProcedure;
                                 cmd.ExecuteNonQuery();
                                 isTrue = true;
@@ -136,9 +136,9 @@ namespace Ecommercegq
                                 if (defaultImagePos > 0)
                                 {
                                     cmd = new MySqlCommand("Product_Crud", con, transaction);
-                                    cmd.Parameters.AddWithValue("?in_Action", "UPDATE_IMG_POS");                                    
-                                    cmd.Parameters.AddWithValue("?in_ProductId", productId);
-                                    cmd.Parameters.AddWithValue("?in_DefaultImagePos", defaultImagePos);
+                                    cmd.Parameters.AddWithValue("in_Action", "UPDATE_IMG_POS");                                    
+                                    cmd.Parameters.AddWithValue("in_ProductId", productId);
+                                    cmd.Parameters.AddWithValue("in_DefaultImagePos", defaultImagePos);
                                     cmd.CommandType = CommandType.StoredProcedure;
                                     cmd.ExecuteNonQuery();
                                     result = 1;
@@ -154,10 +154,10 @@ namespace Ecommercegq
                                 foreach (var image in productImages)
                                 {
                                     cmd = new MySqlCommand("Product_Crud", con, transaction);
-                                    cmd.Parameters.AddWithValue("?in_Action", "INSERT_PROD_IMG");
-                                    cmd.Parameters.AddWithValue("?in_ImageUrl", image.ImageUrl);
-                                    cmd.Parameters.AddWithValue("?in_ProductId", productId);
-                                    cmd.Parameters.AddWithValue("?in_DefaultImage", image.DefaultImage);
+                                    cmd.Parameters.AddWithValue("in_Action", "INSERT_PROD_IMG");
+                                    cmd.Parameters.AddWithValue("in_ImageUrl", image.ImageUrl);
+                                    cmd.Parameters.AddWithValue("in_ProductId", productId);
+                                    cmd.Parameters.AddWithValue("in_DefaultImage", image.DefaultImage);
                                     cmd.CommandType = CommandType.StoredProcedure;
                                     cmd.ExecuteNonQuery();
                                     result = 1;
@@ -169,14 +169,14 @@ namespace Ecommercegq
 
                     transaction.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     try
                     {
                         transaction.Rollback();
                         result = 0;
                     }
-                    catch(Exception e) 
+                    catch (Exception)
                     {
                         throw;
 
@@ -222,7 +222,7 @@ namespace Ecommercegq
                 }
                 return dt;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -236,8 +236,8 @@ namespace Ecommercegq
                 {
                     con.Open();
                     cmd = new MySqlCommand("Product_Crud", con);
-                    cmd.Parameters.AddWithValue("?in_Action", "GETBYID");
-                    cmd.Parameters.AddWithValue("?in_ProductId", pId);
+                    cmd.Parameters.AddWithValue("in_Action", "GETBYID");
+                    cmd.Parameters.AddWithValue("in_ProductId", pId);
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -259,7 +259,7 @@ namespace Ecommercegq
                 {
                     con.Open();
                     cmd = new MySqlCommand("Product_Crud", con);
-                    cmd.Parameters.AddWithValue("?in_Action", "SELECT");                    
+                    cmd.Parameters.AddWithValue("in_Action", "SELECT");                    
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();

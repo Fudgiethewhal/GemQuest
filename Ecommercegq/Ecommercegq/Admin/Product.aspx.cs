@@ -42,11 +42,11 @@ namespace Ecommercegq.Admin
             cmd = new MySqlCommand("Category_Crud", con);
 
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("?in_Action", "GETALL");
-            cmd.Parameters.AddWithValue("?in_CategoryId", DBNull.Value);
-            cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
-            cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
-            cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_Action", "GETALL");
+            cmd.Parameters.AddWithValue("in_CategoryId", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
             sda = new MySqlDataAdapter(cmd);
             dt = new DataTable();
             sda.Fill(dt);
@@ -66,12 +66,12 @@ namespace Ecommercegq.Admin
         {
             con = new MySqlConnection(Utils.getConnection());
             cmd = new MySqlCommand("SubCategory_Crud", con);
-            cmd.Parameters.AddWithValue("?in_Action", "SUBCATEGORYBYID");
-            cmd.Parameters.AddWithValue("?in_CategoryId", categoryId);
+            cmd.Parameters.AddWithValue("in_Action", "SUBCATEGORYBYID");
+            cmd.Parameters.AddWithValue("in_CategoryId", categoryId);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("?in_CategoryName", DBNull.Value);
-            cmd.Parameters.AddWithValue("?in_CategoryImageUrl", DBNull.Value);
-            cmd.Parameters.AddWithValue("?in_IsActive", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
             sda = new MySqlDataAdapter(cmd);
             dt1 = new DataTable();
             sda.Fill(dt1);
