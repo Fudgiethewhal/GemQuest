@@ -69,7 +69,7 @@
                                         OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged">
                                         <asp:ListItem Value="0">Select Category</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="frvCategory" runat="server" ForeColor="Red" Font-Size="Small"
+                                    <asp:RequiredFieldValidator ID="rfvCategory" runat="server" ForeColor="Red" Font-Size="Small"
                                         Display="Dynamic" SetFocusOnError="true" ControlToValidate="ddlCategory" InitialValue="0"
                                         ErrorMessage="Category is required"></asp:RequiredFieldValidator>
                                 </div>

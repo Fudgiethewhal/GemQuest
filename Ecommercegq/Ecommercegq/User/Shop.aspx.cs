@@ -47,6 +47,7 @@ namespace Ecommercegq.User
                     con.Open();                
                     cmd = new MySqlCommand("Product_Crud", con);
                     cmd.Parameters.AddWithValue("in_Action", "ACTIVEPRODUCT");
+                    cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -68,7 +69,7 @@ namespace Ecommercegq.User
             }
             catch (Exception e)
             {
-                Response.Write("<script>alert('" + e.Message + "')</script>");
+                Response.Write("<script>alert('" + e.Message.Replace("'", "\\'").Replace(Environment.NewLine, " ") + "')</script>");
             }
         }
 
@@ -82,6 +83,7 @@ namespace Ecommercegq.User
                     cmd = new MySqlCommand("Product_Crud", con);
                     cmd.Parameters.AddWithValue("in_Action", "PRDTBYCATEGORY");
                     cmd.Parameters.AddWithValue("in_CategoryId", categoryId);
+                    cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -103,7 +105,7 @@ namespace Ecommercegq.User
             }
             catch (Exception e)
             {
-                Response.Write("<script>alert('" + e.Message + "')</script>");
+                Response.Write("<script>alert('" + e.Message.Replace("'", "\\'").Replace(Environment.NewLine, " ") + "')</script>");
             }
         }
 
@@ -117,6 +119,7 @@ namespace Ecommercegq.User
                     cmd = new MySqlCommand("Product_Crud", con);
                     cmd.Parameters.AddWithValue("in_Action", "PRDTBYSUBCATEGORY");
                     cmd.Parameters.AddWithValue("in_SubCategoryId", subCategoryId);
+                    cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -138,7 +141,7 @@ namespace Ecommercegq.User
             }
             catch (Exception e)
             {
-                Response.Write("<script>alert('" + e.Message + "')</script>");
+                Response.Write("<script>alert('" + e.Message.Replace("'", "\\'").Replace(Environment.NewLine, " ") + "')</script>");
             }
         }
         //Custom Template class to add controls to the repeater's header, item and footer sections.

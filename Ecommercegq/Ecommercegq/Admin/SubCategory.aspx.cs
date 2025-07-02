@@ -39,6 +39,7 @@ namespace Ecommercegq.Admin
             cmd.Parameters.AddWithValue("in_Action", "GETALL");
             cmd.Parameters.AddWithValue("in_CategoryId", DBNull.Value);
             cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
             cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
             cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
 
@@ -59,6 +60,7 @@ namespace Ecommercegq.Admin
             cmd = new MySqlCommand("SubCategory_Crud", con);
             cmd.Parameters.AddWithValue("in_Action", "GETALL");
             cmd.Parameters.AddWithValue("in_CategoryId", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
             cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
             cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
             cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
@@ -80,6 +82,7 @@ namespace Ecommercegq.Admin
             con = new MySqlConnection(Utils.getConnection());
             cmd = new MySqlCommand("SubCategory_Crud", con);
             cmd.Parameters.AddWithValue("in_Action", subCategoryId == 0 ? "INSERT" : "UPDATE");
+            cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
             cmd.Parameters.AddWithValue("in_SubCategoryId", subCategoryId);
             cmd.Parameters.AddWithValue("in_SubCategoryName", txtSubCategoryName.Text.Trim());
             cmd.Parameters.AddWithValue("in_CategoryId", Convert.ToInt32( ddlCategory.SelectedValue ));
@@ -132,12 +135,14 @@ namespace Ecommercegq.Admin
 
                 cmd.Parameters.AddWithValue("in_Action", "GETBYID");
                 cmd.Parameters.AddWithValue("in_SubCategoryId", Convert.ToInt32(e.CommandArgument));
+                cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
                 cmd.CommandType = CommandType.StoredProcedure;
                 sda = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
                 sda.Fill(dt);
                 cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
                 txtSubCategoryName.Text = dt.Rows[0]["SubCategoryName"].ToString();
                 cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
@@ -150,6 +155,7 @@ namespace Ecommercegq.Admin
                 con = new MySqlConnection(Utils.getConnection());
                 cmd = new MySqlCommand("SubCategory_Crud", con);
                 cmd.Parameters.AddWithValue("in_Action", "DELETE");
+                cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_SubCategoryId", Convert.ToInt32(e.CommandArgument));
                 cmd.CommandType = CommandType.StoredProcedure;
                 try
