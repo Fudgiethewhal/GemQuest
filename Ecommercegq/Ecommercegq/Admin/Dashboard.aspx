@@ -1,8 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Ecommercegq.Admin.Dashboard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"> 
-    <script src="../AdminTemplate/assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="../AdminTemplate/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../AdminTemplate/dist/js/pages/dashboards/dashboard1.min.js"></script>
+    <%--<script src="../AdminTemplate/assets/libs/chartist/dist/chartist.min.js"></script>--%>
+    <script src="file:///c:\users\15756\repos\ecommercegq\ecommercegq\ecommercegq\admintemplate\assets\libs\chartist\dist\chartist.min.js"></script>
+    <script src="file:///c:\users\15756\repos\ecommercegq\ecommercegq\ecommercegq\admintemplate\dist\js\pages\chartist\chartist-plugin-tooltip.min.js"></script>
+    <%--<script src="../AdminTemplate/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>--%>
+    <script src="file:///c:\users\15756\repos\ecommercegq\ecommercegq\ecommercegq\admintemplate\dist\js\pages\dashboards\dashboard1.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

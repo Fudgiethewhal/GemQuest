@@ -24,8 +24,8 @@
     <link href="../AdminTemplate/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="../AdminTemplate/datatables/css/responsive.bootstrap4.min.css" rel="stylesheet" />
     <link href="../AdminTemplate/datatables/css/icon-font.min.css" rel="stylesheet" />
-
-    <script src="../AdminTemplate/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="file:///c:\users\15756\repos\ecommercegq\ecommercegq\ecommercegq\admintemplate\assets\libs\jquery\dist\jquery.min.js"></script>
+    <%--<script src="../AdminTemplate/assets/libs/jquery/dist/jquery.min.js"></script>--%>
     
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -466,7 +466,6 @@
     
     <script src="../AdminTemplate/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="../AdminTemplate/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../AdminTemplate/dist/js/pages/dashboards/dashboard1.min.js"></script>
 
     <!-- Datatables JS -->
     <script src="../AdminTemplate/datatables/js/jquery.dataTables.min.js"></script>
