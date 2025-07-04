@@ -13,7 +13,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../AdminTemplate/assets/images/favicon.png">
-    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <title>Gemquest</title>
     <!-- Custom CSS -->
     <link href="../AdminTemplate/assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="../AdminTemplate/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
@@ -24,8 +24,7 @@
     <link href="../AdminTemplate/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="../AdminTemplate/datatables/css/responsive.bootstrap4.min.css" rel="stylesheet" />
     <link href="../AdminTemplate/datatables/css/icon-font.min.css" rel="stylesheet" />
-    <script src="file:///c:\users\15756\repos\ecommercegq\ecommercegq\ecommercegq\admintemplate\assets\libs\jquery\dist\jquery.min.js"></script>
-    <%--<script src="../AdminTemplate/assets/libs/jquery/dist/jquery.min.js"></script>--%>
+    <script src="../AdminTemplate/assets/libs/jquery/dist/jquery.min.js"></script>
     
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
