@@ -49,6 +49,7 @@ namespace Ecommercegq.User
                     imagePath = "Images/User/" + newImageName.ToString() + fileExtension;
                     fuUserImage.PostedFile.SaveAs(Server.MapPath("~/Images/User/") + newImageName.ToString() + fileExtension);
                     cmd.Parameters.AddWithValue("in_ImageUrl", imagePath);
+                    cmd.Parameters.AddWithValue("in_Action", DBNull.Value);
                     isValidToExecute = true;
                 }
                 else

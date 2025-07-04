@@ -143,6 +143,7 @@ namespace Ecommercegq.Admin
                 sda.Fill(dt);
                 cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_Action", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
                 txtSubCategoryName.Text = dt.Rows[0]["SubCategoryName"].ToString();

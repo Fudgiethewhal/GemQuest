@@ -37,7 +37,7 @@ namespace Ecommercegq.Admin
                 cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
-            cmd.Parameters.AddWithValue("in_Sold", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_Sold", DBNull.Value);
 
             sda = new MySqlDataAdapter(cmd);
                 
@@ -47,72 +47,82 @@ namespace Ecommercegq.Admin
                     rCategory.DataBind();
                             
         }
-            #pragma warning disable IDE1006 // Naming Styles
-            #pragma warning restore IDE1006 // Naming Styles
+#pragma warning disable IDE1006 // Naming Styles
+#pragma warning restore IDE1006 // Naming Styles
         protected void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
             string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
             bool isValidToExecute = false;
             int categoryId = Convert.ToInt32(hfCategoryId.Value);
             con = new MySqlConnection(Utils.getConnection());
-            cmd = new MySqlCommand("Category_Crud", con);        
-            cmd.Parameters.AddWithValue("Action", categoryId == 0 ? "INSERT" : "UPDATE");
+            cmd = new MySqlCommand("Category_Crud", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("in_Action", categoryId == 0 ? "INSERT" : "UPDATE");
             cmd.Parameters.AddWithValue("in_CategoryId", categoryId);
             cmd.Parameters.AddWithValue("in_CategoryName", txtCategoryName.Text.Trim());
             cmd.Parameters.AddWithValue("in_IsActive", cbIsActive.Checked);
-                if (fuCategoryImage.HasFile)
+
+            // Always set imagePath, even if empty (for SP)
+            imagePath = "";
+            if (fuCategoryImage.HasFile)
+            {
+                if (Utils.isValidExtension(fuCategoryImage.FileName))
                 {
-                    if(Utils.isValidExtension(fuCategoryImage.FileName))
-                    {
-                        string newImageName = Utils.getUniqueId();
-                        fileExtension = Path.GetExtension(fuCategoryImage.FileName);
-                        imagePath = "Images/Category/" + newImageName.ToString() + fileExtension;
-                        fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + newImageName.ToString() + fileExtension);
-                        cmd.Parameters.AddWithValue("in_CategoryImageUrl", imagePath);
-                        isValidToExecute = true;
-                    }
-                    else
-                    {
-                        lblMsg.Visible = false;
-                        lblMsg.Text = "Please upload a valid image file (jpg, jpeg, png).";
-                        lblMsg.CssClass = "alert alert-danger";
-                        isValidToExecute = false;
-                        
-                    }
+                    string newImageName = Utils.getUniqueId();
+                    fileExtension = Path.GetExtension(fuCategoryImage.FileName);
+                    imagePath = "Images/Category/" + newImageName + fileExtension;
+                    fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + newImageName + fileExtension);
+                    isValidToExecute = true;
                 }
                 else
                 {
-                    isValidToExecute = true;
+                    lblMsg.Visible = true;
+                    lblMsg.Text = "Please upload a valid image file (jpg, jpeg, png).";
+                    lblMsg.CssClass = "alert alert-danger";
+                    isValidToExecute = false;
                 }
-                if (isValidToExecute)
+            }
+            else
+            {
+                // For UPDATE, keep the old image if not uploading a new one
+                if (categoryId != 0)
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    try
-                    {
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                        actionName = categoryId == 0 ? " inserted " : " updated ";
-                        lblMsg.Visible = true;
-                        lblMsg.Text = " Category " + actionName + " successfully!";
-                        lblMsg.CssClass = "alert alert-success";
-                        getCategories();
-                        clear();
-                        
-                    }
-                    catch (Exception ex)
-                    {
-                        lblMsg.Visible = true;
-                        lblMsg.Text = "Error- " + ex.Message;
-                        lblMsg.CssClass = "alert alert-danger";
-                    }
-                    finally
-                    {
-                        con.Close();
-                    }
-
+                    imagePath = imagePreview.ImageUrl.Replace("../", ""); // Remove leading ../ if present
                 }
+                isValidToExecute = true;
+            }
+
+            cmd.Parameters.AddWithValue("in_CategoryImageUrl", string.IsNullOrEmpty(imagePath) ? DBNull.Value : (object)imagePath);
+
+            cmd.Parameters.AddWithValue("in_Sold", DBNull.Value); // If your SP needs this
+
+            if (isValidToExecute)
+            {
+                try
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    actionName = categoryId == 0 ? "inserted" : "updated";
+                    lblMsg.Visible = true;
+                    lblMsg.Text = "Category " + actionName + " successfully!";
+                    lblMsg.CssClass = "alert alert-success";
+                    getCategories();
+                    clear();
+                }
+                catch (Exception ex)
+                {
+                    lblMsg.Visible = true;
+                    lblMsg.Text = "Error- " + ex.Message;
+                    lblMsg.CssClass = "alert alert-danger";
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
         }
-        
+
         protected void btnClear_Click(object sender, EventArgs e)
         {
             clear();
@@ -144,6 +154,7 @@ namespace Ecommercegq.Admin
                 dt = new DataTable();
                 sda.Fill(dt);
                 cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_Action", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
                 txtCategoryName.Text = dt.Rows[0]["CategoryName"].ToString();
@@ -158,19 +169,22 @@ namespace Ecommercegq.Admin
             {
                 con = new MySqlConnection(Utils.getConnection());
                 cmd = new MySqlCommand("Category_Crud", con);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("in_Action", "DELETE");
                 cmd.Parameters.AddWithValue("in_CategoryId", Convert.ToInt32(e.CommandArgument));
-                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
+
                 try
                 {
                     con.Open();
                     cmd.ExecuteNonQuery();
-                    
+
                     lblMsg.Visible = true;
-                    lblMsg.Text = " Category deleted successfully!";
+                    lblMsg.Text = "Category deleted successfully!";
                     lblMsg.CssClass = "alert alert-success";
                     getCategories();
-                   
                 }
                 catch (Exception ex)
                 {
@@ -182,8 +196,8 @@ namespace Ecommercegq.Admin
                 {
                     con.Close();
                 }
-            }    
-            
+            }
+
         }
     }
 }

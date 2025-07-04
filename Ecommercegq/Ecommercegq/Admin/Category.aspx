@@ -33,7 +33,7 @@
     <div class="mb-4">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>
     </div>
-    
+
     <div class="row">
         <div class="col-sm-12 col-md-4">
             <div class="card">
@@ -127,10 +127,15 @@
                                             CommandArgument='<%# Eval("CategoryId") %>' CommandName="edit" CausesValidation="false">
                                             <i class="fas fa-edit"></i>
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lblDelete" Text="Delete" runat="server" CssClass="badge badge-danger">
-                                          CommandArgument='<%# Eval("CategoryId") %>' CommandName="delete" CausesValidation="false"
-                                            OnClientClick="return confirm('Do you want to delete this product?');>
-                                            <i class="fas fa-trash-alt"></i>
+                                        <asp:LinkButton
+                                            ID="lblDelete"
+                                            runat="server"
+                                            CssClass="badge badge-danger"
+                                            CommandArgument='<%# Eval("CategoryId") %>'
+                                            CommandName="delete"
+                                            CausesValidation="false"
+                                            OnClientClick="return confirm('Do you want to delete this product?');">
+                                            <i class="fas fa-trash-alt"></i> Delete
                                         </asp:LinkButton>
                                     </td>
                                 </tr>
