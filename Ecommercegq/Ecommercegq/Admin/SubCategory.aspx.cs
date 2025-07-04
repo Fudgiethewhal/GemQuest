@@ -42,6 +42,7 @@ namespace Ecommercegq.Admin
             cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
             cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
             cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_Sold", DBNull.Value);
 
             sda = new MySqlDataAdapter(cmd);
 

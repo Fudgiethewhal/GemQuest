@@ -6,7 +6,10 @@
         window.onload = function () {
             var seconds = 5;
             setTimeout(function () {
-                document.getElementById("<%=lblMsg.ClientID %>").style.display = "none";
+                var lblMsg = document.getElementById("<%=lblMsg.ClientID %>");
+                if (lblMsg) {
+                    lblMsg.style.display = "none";
+                }
             }, seconds * 1000);
         };
     </script>

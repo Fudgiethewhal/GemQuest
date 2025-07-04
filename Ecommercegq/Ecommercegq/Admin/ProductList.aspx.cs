@@ -52,6 +52,7 @@ namespace Ecommercegq.Admin
                 cmd = new MySqlCommand("Product_Crud", con);
                 cmd.Parameters.AddWithValue("in_Action", "DELETE");
                 cmd.Parameters.AddWithValue("in_ProductId", e.CommandArgument);
+                cmd.Parameters.AddWithValue("in_ProductName", DBNull.Value);
                 cmd.CommandType = CommandType.StoredProcedure;
                 try
                 {

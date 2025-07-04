@@ -310,6 +310,7 @@
     <Content Include="AdminTemplate\assets\libs\chart.js\dist\Chart.min.js" />
     <Content Include="AdminTemplate\assets\libs\chartist-plugin-tooltips\dist\chartist-plugin-tooltip.css" />
     <Content Include="AdminTemplate\assets\libs\chartist-plugin-tooltips\dist\chartist-plugin-tooltip.min.js" />
+    <Content Include="AdminTemplate\assets\libs\chartist-plugin-tooltips\dist\newFile.js" />
     <Content Include="AdminTemplate\assets\libs\chartist\dist\chartist.min.css" />
     <Content Include="AdminTemplate\assets\libs\chartist\dist\chartist.min.js" />
     <Content Include="AdminTemplate\assets\libs\datatables.net-bs4\css\dataTables.bootstrap4.min.css" />
