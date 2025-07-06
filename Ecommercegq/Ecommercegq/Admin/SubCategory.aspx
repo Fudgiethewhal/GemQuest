@@ -6,8 +6,11 @@
         window.onload = function () {
             var seconds = 5;
             setTimeout(function () {
-                document.getElementById("<%=lblMsg.ClientID %>").style.display = "none";
-            }, seconds * 1000);
+                var msgElement = document.getElementById("<%=lblMsg.ClientID %>");
+            if (msgElement && msgElement.style.display !== "none") {
+                msgElement.style.display = "none";
+            }
+        }, seconds * 1000);
         };
     </script>
 
@@ -39,7 +42,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <label>Category</label>
                         <div class="row">
                             <div class="col-md-12">
@@ -50,6 +52,7 @@
                                     <asp:RequiredFieldValidator ID="rfvCategory" runat="server" ForeColor="Red" Font-Size="Small"
                                         Display="Dynamic" SetFocusOnError="true" ControlToValidate="ddlCategory"
                                         ErrorMessage="Category is required" InitialValue="0" ></asp:RequiredFieldValidator>
+                                    <asp:HiddenField ID="hfCategoryId" runat="server" Value="0" />
                                     <asp:HiddenField ID="hfSubCategoryId" runat="server" Value="0" />
                                 </div>
                             </div>
@@ -112,10 +115,10 @@
                                             CommandArgument='<%# Eval("SubCategoryId") %>' CommandName="edit" CausesValidation="false">
                                             <i class="fas fa-edit"></i>
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lblDelete" Text="Delete" runat="server" CssClass="badge badge-danger">
-                                          CommandArgument='<%# Eval("SubCategoryId") %>' CommandName="delete" CausesValidation="false"
-                                            OnClientClick="return confirm('Do you want to delete this product?');>
-                                            <i class="fas fa-trash-alt"></i>
+                                        <asp:LinkButton ID="lblDelete" Text="Delete" runat="server" CssClass="badge badge-danger"
+                                            CommandArgument='<%# Eval("SubCategoryId") %>' CommandName="delete" CausesValidation="false"
+                                            OnClientClick="return confirm('Do you want to delete this subcategory?');">
+                                        <i class="fas fa-trash-alt"></i>
                                         </asp:LinkButton>
                                     </td>
                                 </tr>

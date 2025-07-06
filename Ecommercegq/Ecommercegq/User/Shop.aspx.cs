@@ -65,7 +65,8 @@ namespace Ecommercegq.User
                     cmd.Parameters.AddWithValue("in_DefaultImage", DBNull.Value);
                     cmd.Parameters.AddWithValue("in_Sold", DBNull.Value);
                     cmd.Parameters.AddWithValue("in_DefaultImagePos", DBNull.Value);
-                    
+                    cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value);
+
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -119,7 +120,9 @@ namespace Ecommercegq.User
                     cmd.Parameters.AddWithValue("in_DefaultImage", DBNull.Value);
                     cmd.Parameters.AddWithValue("in_Sold", DBNull.Value);
                     cmd.Parameters.AddWithValue("in_DefaultImagePos", DBNull.Value);
-                    
+                    cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value);       
+
+
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -173,6 +176,7 @@ namespace Ecommercegq.User
                     cmd.Parameters.AddWithValue("in_DefaultImage", DBNull.Value);
                     cmd.Parameters.AddWithValue("in_Sold", DBNull.Value);
                     cmd.Parameters.AddWithValue("in_DefaultImagePos", DBNull.Value);
+                    cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value);
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda = new MySqlDataAdapter(cmd);
                     dt = new DataTable();

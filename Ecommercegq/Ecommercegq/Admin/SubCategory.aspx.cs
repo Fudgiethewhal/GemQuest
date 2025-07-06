@@ -44,10 +44,8 @@ namespace Ecommercegq.Admin
             cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
             cmd.Parameters.AddWithValue("in_Sold", DBNull.Value);
             cmd.Parameters.AddWithValue("in_SubCategoryId", DBNull.Value);
-
-
+            cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value);
             sda = new MySqlDataAdapter(cmd);
-
             dt = new DataTable();
             sda.Fill(dt);
             ddlCategory.DataSource = dt;
@@ -68,6 +66,8 @@ namespace Ecommercegq.Admin
             cmd.Parameters.AddWithValue("in_SubCategoryId", DBNull.Value);            
             cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
             cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
+            cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value);
+
             cmd.CommandType = CommandType.StoredProcedure;
             sda = new MySqlDataAdapter(cmd);
             dt = new DataTable();
@@ -150,6 +150,7 @@ namespace Ecommercegq.Admin
                 cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_SubCategoryId", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value);
                 txtSubCategoryName.Text = dt.Rows[0]["SubCategoryName"].ToString();
                 cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
                 ddlCategory.SelectedValue = dt.Rows[0]["CategoryId"].ToString();
@@ -162,6 +163,7 @@ namespace Ecommercegq.Admin
                 cmd = new MySqlCommand("SubCategory_Crud", con);
                 cmd.Parameters.AddWithValue("in_Action", "DELETE");
                 cmd.Parameters.AddWithValue("in_ProductId", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_SubCategoryId", Convert.ToInt32(e.CommandArgument));
                 cmd.CommandType = CommandType.StoredProcedure;
                 try

@@ -38,6 +38,8 @@ namespace Ecommercegq.Admin
                 cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_Sold", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value);
+
 
             sda = new MySqlDataAdapter(cmd);
                 
@@ -157,6 +159,7 @@ namespace Ecommercegq.Admin
                 cmd.Parameters.AddWithValue("in_Action", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value);
                 txtCategoryName.Text = dt.Rows[0]["CategoryName"].ToString();
                 cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
                 imagePreview.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["CategoryImageUrl"].ToString()) ? "../Images/No_image.png" : "../" + dt.Rows[0]["CategoryImageUrl"].ToString();
@@ -175,6 +178,8 @@ namespace Ecommercegq.Admin
                 cmd.Parameters.AddWithValue("in_CategoryName", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_CategoryImageUrl", DBNull.Value);
                 cmd.Parameters.AddWithValue("in_IsActive", DBNull.Value);
+                cmd.Parameters.AddWithValue("in_SubCategoryName", DBNull.Value);
+
 
                 try
                 {
