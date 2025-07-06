@@ -230,7 +230,7 @@
         </div>
         <!-- Shop Product End -->
     </div>
-    </div>
+  
     <!-- Shop End -->
 
 </asp:Content>
