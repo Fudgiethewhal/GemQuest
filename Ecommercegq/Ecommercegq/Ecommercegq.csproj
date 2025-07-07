@@ -237,7 +237,6 @@
     <Content Include="AdminTemplate\assets\images\landingpage\section-img.png" />
     <Content Include="AdminTemplate\assets\images\logo-icon.png" />
     <Content Include="AdminTemplate\assets\images\logo-light-text.png" />
-    <Content Include="AdminTemplate\assets\images\logo-text.png" />
     <Content Include="AdminTemplate\assets\images\product\chair.png" />
     <Content Include="AdminTemplate\assets\images\product\chair2.png" />
     <Content Include="AdminTemplate\assets\images\product\chair3.png" />
@@ -293,6 +292,7 @@
     <Content Include="AdminTemplate\assets\images\widgets\1.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\2.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\3.jpg" />
+    <Content Include="AdminTemplate\assets\images\widgets\logo-text.png" />
     <Content Include="AdminTemplate\assets\images\widgets\widget-carousel-2.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\widget-carousel.jpg" />
     <Content Include="AdminTemplate\assets\libs\bootstrap\dist\css\bootstrap-grid.css" />
@@ -660,14 +660,13 @@
     <Content Include="Global.asax" />
     <Content Include="UserTemplate\css\style.css" />
     <Content Include="UserTemplate\css\style.min.css" />
-    <Content Include="UserTemplate\img\carousel-1.jpg" />
-    <Content Include="UserTemplate\img\carousel-2.jpg" />
     <Content Include="UserTemplate\img\cat-1.jpg" />
     <Content Include="UserTemplate\img\cat-2.jpg" />
     <Content Include="UserTemplate\img\cat-3.jpg" />
     <Content Include="UserTemplate\img\cat-4.jpg" />
     <Content Include="UserTemplate\img\cat-5.jpg" />
     <Content Include="UserTemplate\img\cat-6.jpg" />
+    <Content Include="UserTemplate\img\carousel-1.jpg" />
     <Content Include="UserTemplate\img\offer-1.png" />
     <Content Include="UserTemplate\img\offer-2.png" />
     <Content Include="UserTemplate\img\payments.png" />
@@ -679,6 +678,7 @@
     <Content Include="UserTemplate\img\product-6.jpg" />
     <Content Include="UserTemplate\img\product-7.jpg" />
     <Content Include="UserTemplate\img\product-8.jpg" />
+    <Content Include="UserTemplate\img\carousel-2.jpg" />
     <Content Include="UserTemplate\img\user.jpg" />
     <Content Include="UserTemplate\img\vendor-1.jpg" />
     <Content Include="UserTemplate\img\vendor-2.jpg" />
