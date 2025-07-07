@@ -216,6 +216,7 @@
     <Content Include="AdminTemplate\assets\images\gallery\chair2.jpg" />
     <Content Include="AdminTemplate\assets\images\gallery\chair3.jpg" />
     <Content Include="AdminTemplate\assets\images\gallery\chair4.jpg" />
+    <Content Include="AdminTemplate\assets\images\logo-light-text.jpg" />
     <Content Include="AdminTemplate\assets\images\img1.jpg" />
     <Content Include="AdminTemplate\assets\images\img2.jpg" />
     <Content Include="AdminTemplate\assets\images\img3.jpg" />
@@ -236,7 +237,7 @@
     <Content Include="AdminTemplate\assets\images\landingpage\section-bg.png" />
     <Content Include="AdminTemplate\assets\images\landingpage\section-img.png" />
     <Content Include="AdminTemplate\assets\images\logo-icon.png" />
-    <Content Include="AdminTemplate\assets\images\logo-light-text.png" />
+    <Content Include="AdminTemplate\assets\images\logo-light-text1.png" />
     <Content Include="AdminTemplate\assets\images\product\chair.png" />
     <Content Include="AdminTemplate\assets\images\product\chair2.png" />
     <Content Include="AdminTemplate\assets\images\product\chair3.png" />
@@ -282,9 +283,8 @@
     <Content Include="AdminTemplate\assets\images\users\d3.jpg" />
     <Content Include="AdminTemplate\assets\images\users\d4.jpg" />
     <Content Include="AdminTemplate\assets\images\users\d5.jpg" />
-    <Content Include="AdminTemplate\assets\images\users\profile-pic-2.jpg" />
-    <Content Include="AdminTemplate\assets\images\users\profile-pic.jpg" />
     <Content Include="AdminTemplate\assets\images\users\profile.png" />
+    <Content Include="AdminTemplate\assets\images\users\profile-pic.jpg" />
     <Content Include="AdminTemplate\assets\images\users\widget-table-pic1.jpg" />
     <Content Include="AdminTemplate\assets\images\users\widget-table-pic2.jpg" />
     <Content Include="AdminTemplate\assets\images\users\widget-table-pic3.jpg" />
