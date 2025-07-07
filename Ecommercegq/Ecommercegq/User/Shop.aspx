@@ -15,7 +15,7 @@
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Our Shop</h1>
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Our Crystal Shop</h1>
             <div class="d-inline-flex">
                 <p class="m-0"><a href="">Home</a></p>
                 <p class="m-0 px-2">-</p>
@@ -147,7 +147,7 @@
                     </form>
                 </div>
                 <!-- Size End -->
-            </div>--%>
+            </div>
             <!-- Shop Sidebar End -->
 
 
@@ -167,7 +167,7 @@
                                             <i class="fa fa-search"></i>
                                         </asp:LinkButton>
                                         <asp:LinkButton ID="btnReset" runat="server" CssClass="input-group-text bg-banner transparent text-primary" OnClick="btnReset_Click">
-                                            <i class ="fas fa-sync-alt"</i>
+                                            <%--<i class ="fas fa-sync-alt"</i>--%>
                                         </asp:LinkButton>
                                     </div>
                                 </div>
@@ -191,7 +191,7 @@
                                         <asp:ListItem Value="3">Price</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:LinkButton ID="btnSortReset" runat="server" CssClass="input-group-text bg-transparent text-primary" OnClick="btnSortReset_Click">
-                                    <i class="fas fa-sync-alt"> </i>
+                                    <%--<i class="fas fa-sync-alt"> </i>--%>
                                     </asp:LinkButton>
                                 </div>
                             </div>
@@ -213,7 +213,7 @@
                                     </div>
                                     <div class="card-footer d-flex justify-content-between bg-light border">
                                         <a href='<%# "ShopDetail.aspx?id=" + Eval("ProductId") %>' class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                        <%--<a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>--%>
+                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                                         <asp:LinkButton ID="lbAddToCart" runat="server" CssClass="btn btn-sm text-dark p-0" CommandName="addToCart"
                                             CommandArgument='<%# Eval("ProductId") %>'>
                                             <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart

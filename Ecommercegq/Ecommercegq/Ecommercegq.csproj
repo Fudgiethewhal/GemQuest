@@ -660,6 +660,7 @@
     <Content Include="Global.asax" />
     <Content Include="UserTemplate\css\style.css" />
     <Content Include="UserTemplate\css\style.min.css" />
+    <Content Include="UserTemplate\img\beach.jpg" />
     <Content Include="UserTemplate\img\cat-1.jpg" />
     <Content Include="UserTemplate\img\cat-2.jpg" />
     <Content Include="UserTemplate\img\cat-3.jpg" />
@@ -681,6 +682,7 @@
     <Content Include="UserTemplate\img\product-8.jpg" />
     <Content Include="UserTemplate\img\carousel-2.jpg" />
     <Content Include="UserTemplate\img\rose quartz.jpg" />
+    <Content Include="UserTemplate\img\threequartz.jpg" />
     <Content Include="UserTemplate\img\user.jpg" />
     <Content Include="UserTemplate\img\vendor-1.jpg" />
     <Content Include="UserTemplate\img\vendor-2.jpg" />
