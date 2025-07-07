@@ -667,6 +667,7 @@
     <Content Include="UserTemplate\img\cat-5.jpg" />
     <Content Include="UserTemplate\img\cat-6.jpg" />
     <Content Include="UserTemplate\img\carousel-1.jpg" />
+    <Content Include="UserTemplate\img\forest crystal.jpg" />
     <Content Include="UserTemplate\img\offer-1.png" />
     <Content Include="UserTemplate\img\offer-2.png" />
     <Content Include="UserTemplate\img\payments.png" />
@@ -679,6 +680,7 @@
     <Content Include="UserTemplate\img\product-7.jpg" />
     <Content Include="UserTemplate\img\product-8.jpg" />
     <Content Include="UserTemplate\img\carousel-2.jpg" />
+    <Content Include="UserTemplate\img\rose quartz.jpg" />
     <Content Include="UserTemplate\img\user.jpg" />
     <Content Include="UserTemplate\img\vendor-1.jpg" />
     <Content Include="UserTemplate\img\vendor-2.jpg" />
