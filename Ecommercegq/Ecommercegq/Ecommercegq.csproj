@@ -661,6 +661,8 @@
     <Content Include="UserTemplate\css\style.css" />
     <Content Include="UserTemplate\css\style.min.css" />
     <Content Include="UserTemplate\img\beach.jpg" />
+    <Content Include="UserTemplate\img\beachlogo.jpg" />
+    <Content Include="UserTemplate\img\black shirt.jpg" />
     <Content Include="UserTemplate\img\cat-1.jpg" />
     <Content Include="UserTemplate\img\cat-2.jpg" />
     <Content Include="UserTemplate\img\cat-3.jpg" />
@@ -669,6 +671,7 @@
     <Content Include="UserTemplate\img\cat-6.jpg" />
     <Content Include="UserTemplate\img\carousel-1.jpg" />
     <Content Include="UserTemplate\img\forest crystal.jpg" />
+    <Content Include="UserTemplate\img\green shirt.jpg" />
     <Content Include="UserTemplate\img\offer-1.png" />
     <Content Include="UserTemplate\img\offer-2.png" />
     <Content Include="UserTemplate\img\payments.png" />
@@ -681,6 +684,7 @@
     <Content Include="UserTemplate\img\product-7.jpg" />
     <Content Include="UserTemplate\img\product-8.jpg" />
     <Content Include="UserTemplate\img\carousel-2.jpg" />
+    <Content Include="UserTemplate\img\purple shirt.jpg" />
     <Content Include="UserTemplate\img\rose quartz.jpg" />
     <Content Include="UserTemplate\img\threequartz.jpg" />
     <Content Include="UserTemplate\img\user.jpg" />
