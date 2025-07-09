@@ -210,7 +210,7 @@
                                             <i class="fas fa-star-half-alt"></i>
                                             <i class="far fa-star"></i>
                                         </div>
-                                        <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
+                                        <p>Random words</p>
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@
                 <div class="owl-carousel related-carousel">
                     <div class="card product-item border-0">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="../UserTemplate/img/product-1.jpg" alt="">
+                            <img class="img-fluid w-100" src="../UserTemplate/img/beachlogo.jpg" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
@@ -279,7 +279,7 @@
                     </div>
                     <div class="card product-item border-0">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="../UserTemplate/img/product-2.jpg" alt="">
+                            <img class="img-fluid w-100" src="../UserTemplate/img/black shirt.jpg" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
@@ -294,7 +294,7 @@
                     </div>
                     <div class="card product-item border-0">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="../UserTemplate/img/product-3.jpg" alt="">
+                            <img class="img-fluid w-100" src="../UserTemplate/img/purple shirt.jpg" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
@@ -309,7 +309,7 @@
                     </div>
                     <div class="card product-item border-0">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="../UserTemplate/img/product-4.jpg" alt="">
+                            <img class="img-fluid w-100" src="../UserTemplate/img/beach.jpg" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
@@ -324,7 +324,7 @@
                     </div>
                     <div class="card product-item border-0">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="../UserTemplate/img/product-5.jpg" alt="">
+                            <img class="img-fluid w-100" src="../UserTemplate/img/forest crystal.jpg" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
