@@ -211,7 +211,6 @@
     <Content Include="AdminTemplate\assets\images\browser\sketch.jpg" />
     <Content Include="AdminTemplate\assets\images\custom-select.png" />
     <Content Include="AdminTemplate\assets\images\docs\gulp.jpg" />
-    <Content Include="AdminTemplate\assets\images\favicon.png" />
     <Content Include="AdminTemplate\assets\images\gallery\chair.jpg" />
     <Content Include="AdminTemplate\assets\images\gallery\chair2.jpg" />
     <Content Include="AdminTemplate\assets\images\gallery\chair3.jpg" />
@@ -292,6 +291,7 @@
     <Content Include="AdminTemplate\assets\images\widgets\1.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\2.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\3.jpg" />
+    <Content Include="AdminTemplate\assets\images\widgets\favicon.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\logo-text.png" />
     <Content Include="AdminTemplate\assets\images\widgets\widget-carousel-2.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\widget-carousel.jpg" />
