@@ -79,7 +79,7 @@
                             <!-- Logo text -->
                             <span class="logo-text">
                                 <!-- dark Logo text -->
-                                <img src="../AdminTemplate/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                                <img src="../AdminTemplate/assets/images/widgets/ferncrystal.jpg" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo text -->
                                 <img src="../AdminTemplate/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                             </span>
@@ -120,7 +120,7 @@
                                 <img src="../AdminTemplate/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
                                     width="40">
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
-                                        class="text-dark">Jason Doe</span> <i data-feather="chevron-down"
+                                        class="text-dark">Bryseida</span> <i data-feather="chevron-down"
                                         class="svg-icon"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">

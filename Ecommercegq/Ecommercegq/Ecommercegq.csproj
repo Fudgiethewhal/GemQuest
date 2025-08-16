@@ -292,6 +292,7 @@
     <Content Include="AdminTemplate\assets\images\widgets\2.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\3.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\favicon.jpg" />
+    <Content Include="AdminTemplate\assets\images\widgets\ferncrystal.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\logo-text.png" />
     <Content Include="AdminTemplate\assets\images\widgets\widget-carousel-2.jpg" />
     <Content Include="AdminTemplate\assets\images\widgets\widget-carousel.jpg" />

@@ -66,7 +66,7 @@
                 <div class="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
                     <img src="../UserTemplate/img/beach.jpg" alt="">
                     <div class="position-relative" style="z-index: 1;">
-                        <h5 class="text-uppercase text-primary mb-3">20% off the all order</h5>
+                        <h5 class="text-uppercase text-primary mb-3">20% off of your order</h5>
                         <h1 class="mb-4 font-weight-semi-bold">Spring Collection</h1>
                         <a href="#" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                     </div>
@@ -93,7 +93,7 @@
             <div class="col-md-6 col-12 py-5">
                 <div class="text-center mb-2 pb-2">
                     <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-2">Stay Updated</span></h2>
-                    <p>Crystals Galor</p>
+                    <p>Crystals Galore</p>
                 </div>                
                     <div class="input-group">
                         <input type="text" class="form-control border-white p-4" placeholder="Email Goes Here">
